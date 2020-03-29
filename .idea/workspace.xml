@@ -2,70 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68356285-bfb3-45f3-80bf-742adf6e560e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/04_erc20_test/erc20_simple.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05_erc721_pack/IERC165.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/06_kitty_test/kitty_test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_all_token_files/SafeMathSimple.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_all_token_files/SafeMathSimple_test.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/04_erc20_test/IERC20.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/07_erc721_test/erc721_simple.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/08_backup/CryptoHeroes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/08_backup/ERC721Simple.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/08_backup/LichTokenSimple.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/08_backup/erc721_test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/08_backup/erc721_test2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/08_backup/erc721_中文注释.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erc20_test/erc20_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/04_erc20_test/erc20_test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erc721_pack/Address.sol" beforeDir="false" afterPath="$PROJECT_DIR$/05_erc721_pack/Address.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erc721_pack/Context.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/Context.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erc721_pack/Counters.sol" beforeDir="false" afterPath="$PROJECT_DIR$/05_erc721_pack/Counters.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erc721_pack/ERC165.sol" beforeDir="false" afterPath="$PROJECT_DIR$/05_erc721_pack/ERC165.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erc721_pack/ERC721.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC721/ERC721.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erc721_pack/IERC721.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC721/IERC721.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erc721_pack/IERC721Enumerable.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC721/IERC721Enumerable.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erc721_pack/IERC721Metadata.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC721/IERC721Metadata.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erc721_pack/IERC721Receiver.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC721/IERC721Receiver.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erc721_pack/SafeMath.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/SafeMath.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sol/00.txt" beforeDir="false" afterPath="$PROJECT_DIR$/02_sol/00.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sol/01_Storage.txt" beforeDir="false" afterPath="$PROJECT_DIR$/02_sol/01_Storage.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sol/02_Owner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/02_sol/02_Owner.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sol/03_Ballot.txt" beforeDir="false" afterPath="$PROJECT_DIR$/02_sol/03_Ballot.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sol/04_Ballot_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/02_sol/04_Ballot_test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sol/05_LichCoin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/02_sol/05_LichCoin.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sol/06_LichToken.txt" beforeDir="false" afterPath="$PROJECT_DIR$/02_sol/06_LichToken.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sol/07_LichLink.txt" beforeDir="false" afterPath="$PROJECT_DIR$/02_sol/07_LichLink.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sol/08_LichGame.txt" beforeDir="false" afterPath="$PROJECT_DIR$/02_sol/08_LichGame.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sol/09_LichEthLottery.txt" beforeDir="false" afterPath="$PROJECT_DIR$/02_sol/09_LichEthLottery.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sol/10_SafeMath.txt" beforeDir="false" afterPath="$PROJECT_DIR$/02_sol/10_SafeMath.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test00.txt" beforeDir="false" afterPath="$PROJECT_DIR$/01_test/test00.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test01_hello.txt" beforeDir="false" afterPath="$PROJECT_DIR$/01_test/test01_hello.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test02_saveString.txt" beforeDir="false" afterPath="$PROJECT_DIR$/01_test/test02_saveString.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test03_pureTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/01_test/test03_pureTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test04_boolTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/01_test/test04_boolTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test05_math.txt" beforeDir="false" afterPath="$PROJECT_DIR$/01_test/test05_math.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test06_safeMath.txt" beforeDir="false" afterPath="$PROJECT_DIR$/01_test/test06_safeMath.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test07_BitMath.txt" beforeDir="false" afterPath="$PROJECT_DIR$/01_test/test07_BitMath.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test08_decimal.txt" beforeDir="false" afterPath="$PROJECT_DIR$/01_test/test08_decimal.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test09_bytes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/01_test/test09_bytes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/Context.sol" beforeDir="false" afterPath="$PROJECT_DIR$/05_erc721_pack/Context.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/ERC20.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/ERC20.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/IERC20.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/IERC20.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/SafeMath.sol" beforeDir="false" afterPath="$PROJECT_DIR$/05_erc721_pack/SafeMath.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC20/ERC20.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC20/ERC20.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC20/ERC20Burnable.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC20/ERC20Burnable.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC20/ERC20Capped.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC20/ERC20Capped.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC20/ERC20Detailed.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC20/ERC20Detailed.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC20/ERC20Pausable.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC20/ERC20Pausable.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC20/ERC20Snapshot.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC20/ERC20Snapshot.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC20/IERC20.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC20/IERC20.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC20/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC20/README.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC20/SafeERC20.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC20/SafeERC20.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC20/TokenTimelock.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC20/TokenTimelock.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC721/ERC721.sol" beforeDir="false" afterPath="$PROJECT_DIR$/05_erc721_pack/ERC721.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC721/ERC721Burnable.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC721/ERC721Burnable.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC721/ERC721Holder.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC721/ERC721Holder.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC721/ERC721Pausable.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC721/ERC721Pausable.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC721/IERC721.sol" beforeDir="false" afterPath="$PROJECT_DIR$/05_erc721_pack/IERC721.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC721/IERC721Enumerable.sol" beforeDir="false" afterPath="$PROJECT_DIR$/05_erc721_pack/IERC721Enumerable.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC721/IERC721Metadata.sol" beforeDir="false" afterPath="$PROJECT_DIR$/05_erc721_pack/IERC721Metadata.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC721/IERC721Receiver.sol" beforeDir="false" afterPath="$PROJECT_DIR$/05_erc721_pack/IERC721Receiver.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC721/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC721/README.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC777/ERC777.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC777/ERC777.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC777/IERC777.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC777/IERC777.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC777/IERC777Recipient.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC777/IERC777Recipient.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC777/IERC777Sender.sol" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC777/IERC777Sender.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_test/token/ERC777/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/03_all_token_files/token/ERC777/README.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/04_erc20_test/erc20_simple.txt" beforeDir="false" afterPath="$PROJECT_DIR$/04_erc20_test/erc20_simple.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,14 +36,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/05_erc721_pack" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/08_backup" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\D\Project\LichSolidityTest\07_erc721_test" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\D\Project\LichSolidityTest\08_backup" />
+      <recent name="C:\D\Project\LichSolidityTest\03_all_token_files" />
+      <recent name="C:\D\Project\LichSolidityTest\04_erc20_test" />
       <recent name="C:\D\Project\LichSolidityTest\05_erc721_pack" />
       <recent name="C:\D\Project\LichSolidityTest\erc721_pack" />
-      <recent name="C:\D\Project\LichSolidityTest\token_test" />
-      <recent name="C:\D\Project\LichSolidityTest\sol" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -124,6 +76,7 @@
       <workItem from="1585316234621" duration="1226000" />
       <workItem from="1585437827994" duration="16000" />
       <workItem from="1585442789429" duration="5202000" />
+      <workItem from="1585489720341" duration="13739000" />
     </task>
     <servers />
   </component>
@@ -131,17 +84,17 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="500" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585443836092">
+    <state x="500" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585519125283">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="500" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1585443836092" />
+    <state x="500" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1585519125283" />
     <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1585437840707">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585437840707" />
-    <state x="457" y="167" width="621" height="490" key="find.popup" timestamp="1585446688344">
+    <state x="457" y="167" width="621" height="490" key="find.popup" timestamp="1585499363767">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="457" y="167" width="621" height="490" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1585446688344" />
+    <state x="457" y="167" width="621" height="490" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1585499363767" />
   </component>
 </project>
