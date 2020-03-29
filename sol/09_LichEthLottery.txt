@@ -1,0 +1,48 @@
+pragma solidity >=0.4.22 <0.7.0;
+
+contract LichEthLottery{
+
+    uint256 public round;
+    uint256 public count;
+    mapping(uint256=>address payable) players;
+    address payable winner;
+    uint256 private singleMoney=1 ether;
+
+    function join() public payable{
+        require(msg.value==singleMoney);
+
+        count++;
+        players[count]=msg.sender;
+
+        if (count==5){
+            finishRound();
+            newRound();
+        }
+    }
+
+    function finishRound() private{
+        uint256 winnerIndex =getRandom();
+        winner = players[winnerIndex];
+        winner.transfer(address(this).balance);
+    }
+
+    function newRound() private{
+        count=0;
+        round++;
+    }
+
+    function getRandom() private view returns(uint256) {
+        uint256 time=block.timestamp;
+        bytes32 b=keccak256(abi.encodePacked(time));
+        uint256 random=uint256(b)%5+1;
+        return random;
+    }
+
+    function getBalance() public view returns(uint256){
+        return address(this).balance;
+    }
+
+    function getPlayer(uint256 i) public view returns(address){
+        return players[i];
+    }
+}

@@ -1,0 +1,32 @@
+    //0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c
+    //0x14723A09ACff6D2A60DcdF7aA4AFf308FDDC160C
+    address a1=0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c;
+    address payable a2=0x14723A09ACff6D2A60DcdF7aA4AFf308FDDC160C;
+
+    pragma solidity >=0.4.22 <0.7.0;
+
+contract Person{
+
+    string name;
+
+    function sayHello() public pure returns(string memory){
+        return "hello";
+    }
+
+    function sayName() public view returns(string memory){
+        return name;
+    }
+
+    function setName(string memory _name) public {
+        name=_name;
+    }
+}
+
+contract Teacher is Person{
+
+}
+
+contract Student is Person{
+
+}
+
