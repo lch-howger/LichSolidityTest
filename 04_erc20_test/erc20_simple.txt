@@ -1,0 +1,59 @@
+pragma solidity ^0.6.2;
+
+interface IERC721 {
+    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+    event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
+    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
+    function balanceOf(address owner) external view returns (uint256 balance);
+    function ownerOf(uint256 tokenId) external view returns (address owner);
+    function safeTransferFrom(address from, address to, uint256 tokenId) external;
+    function transferFrom(address from, address to, uint256 tokenId) external;
+    function approve(address to, uint256 tokenId) external;
+    function getApproved(uint256 tokenId) external view returns (address operator);
+    function setApprovalForAll(address operator, bool _approved) external;
+    function isApprovedForAll(address owner, address operator) external view returns (bool);
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
+}
+
+contract TestToken is IERC721{
+
+    function balanceOf(address owner) external view override returns (uint256 balance){
+        return 0;
+    }
+
+    function ownerOf(uint256 tokenId) external view override returns (address owner){
+        return msg.sender;
+    }
+
+    function safeTransferFrom(address from, address to, uint256 tokenId) override external{
+
+    }
+
+    function transferFrom(address from, address to, uint256 tokenId) override external{
+
+    }
+
+    function approve(address to, uint256 tokenId) override external{
+
+    }
+
+    function getApproved(uint256 tokenId) external view override returns (address operator){
+        return msg.sender;
+    }
+
+    function setApprovalForAll(address operator, bool _approved) override external{
+
+    }
+
+    function isApprovedForAll(address owner, address operator) external view override returns (bool){
+        return true;
+    }
+
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) override external{
+
+    }
+
+    function supportsInterface(bytes4 interfaceId) external view override returns (bool){
+        return true;
+    }
+}
