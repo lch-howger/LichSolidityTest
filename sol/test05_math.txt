@@ -1,0 +1,23 @@
+pragma solidity >=0.4.22 <0.7.0;
+
+contract Hello{
+
+    uint256 a=100;
+    uint256 b=200;
+
+    function add() public view returns(uint256){
+        return a+b;
+    }
+
+    function sub() public view returns(uint256){
+        return a-b;
+    }
+
+    function mul() public view returns(uint256){
+        return a*b;
+    }
+
+    function div() public view returns(uint256){
+        return a/b;
+    }
+}

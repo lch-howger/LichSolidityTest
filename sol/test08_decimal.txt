@@ -1,0 +1,11 @@
+pragma solidity >=0.4.22 <0.7.0;
+
+contract Hello{
+
+    uint256 a=3;
+    uint256 b=2;
+
+    function test01() public view returns(uint256){
+        return a/b;
+    }
+}

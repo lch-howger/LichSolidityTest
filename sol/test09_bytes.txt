@@ -1,0 +1,20 @@
+pragma solidity >=0.4.22 <0.7.0;
+
+contract Hello{
+
+   bytes1 a=0xaa;
+   bytes2 b=0xbbbb;
+   bytes3 c=0xcccccc;
+
+   function getLength1() public view returns(uint256){
+       return a.length;
+   }
+
+   function getLength2() public view returns(uint256){
+       return b.length;
+   }
+
+   function getLength3() public view returns(uint256){
+       return c.length;
+   }
+}

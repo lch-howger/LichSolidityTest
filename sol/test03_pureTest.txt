@@ -1,0 +1,18 @@
+pragma solidity >=0.4.22 <0.7.0;
+
+contract Hello{
+
+    string str="";
+
+    function getStr() public view returns(string memory){
+        return str;
+    }
+
+    function saveStr(string save) public{
+        str=save;
+    }
+
+    function testStr(string test) public pure returns(string){
+        return test;
+    }
+}
