@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68356285-bfb3-45f3-80bf-742adf6e560e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/03_all_token_files/SafeMathSimple.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_all_token_files/SafeMathSimple_test.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04_erc20_test/IERC20.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/07_erc721_test/erc721_simple.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/08_backup/CryptoHeroes.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/08_backup/ERC721Simple.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/08_backup/LichTokenSimple.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/08_backup/erc721_test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/08_backup/erc721_test2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/08_backup/erc721_中文注释.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/08_backup/erc721_test3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/08_backup/erc721_中文注释_simple.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/09_721token_list/card_test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/10_721_develop/01_base_721.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/10_721_develop/02_721_develop.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/04_erc20_test/erc20_simple.txt" beforeDir="false" afterPath="$PROJECT_DIR$/04_erc20_test/erc20_simple.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,15 +33,15 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/08_backup" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\D\Project\LichSolidityTest\07_erc721_test" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\D\Project\LichSolidityTest\08_backup" />
       <recent name="C:\D\Project\LichSolidityTest\03_all_token_files" />
       <recent name="C:\D\Project\LichSolidityTest\04_erc20_test" />
       <recent name="C:\D\Project\LichSolidityTest\05_erc721_pack" />
       <recent name="C:\D\Project\LichSolidityTest\erc721_pack" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\D\Project\LichSolidityTest\07_erc721_test" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -76,7 +70,9 @@
       <workItem from="1585316234621" duration="1226000" />
       <workItem from="1585437827994" duration="16000" />
       <workItem from="1585442789429" duration="5202000" />
-      <workItem from="1585489720341" duration="13739000" />
+      <workItem from="1585489720341" duration="18474000" />
+      <workItem from="1585590370726" duration="6393000" />
+      <workItem from="1585668693817" duration="1743000" />
     </task>
     <servers />
   </component>
@@ -84,10 +80,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="500" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585519125283">
+    <state x="500" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585619084625">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="500" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1585519125283" />
+    <state x="500" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1585619084625" />
     <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1585437840707">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
