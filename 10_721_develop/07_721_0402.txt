@@ -21,13 +21,10 @@ interface IERC721 is IERC165 {
     event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
     function balanceOf(address owner) external view returns (uint256 balance);
     function ownerOf(uint256 tokenId) external view returns (address owner);
-    function safeTransferFrom(address from, address to, uint256 tokenId) external;
-    function transferFrom(address from, address to, uint256 tokenId) external;
     function approve(address to, uint256 tokenId) external;
     function getApproved(uint256 tokenId) external view returns (address operator);
     function setApprovalForAll(address operator, bool _approved) external;
     function isApprovedForAll(address owner, address operator) external view returns (bool);
-    function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
 }
 
 interface IERC721Metadata is IERC721 {
@@ -210,14 +207,14 @@ contract AaaToken is Context, ERC165, IERC721, IERC721Metadata, IERC721Enumerabl
     function isApprovedForAll(address owner, address operator) public view override returns (bool) {
         return _operatorApprovals[owner][operator];
     }
-    function transferFrom(address from, address to, uint256 tokenId) public virtual override {
+    function transferFrom(address from, address to, uint256 tokenId) public virtual {
         require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
         _transferFrom(from, to, tokenId);
     }
-    function safeTransferFrom(address from, address to, uint256 tokenId) external virtual override {
+    function safeTransferFrom(address from, address to, uint256 tokenId) external virtual {
         safeTransferFrom(from, to, tokenId, "");
     }
-    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public virtual override {
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public virtual {
         require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
         _safeTransferFrom(from, to, tokenId, _data);
     }
