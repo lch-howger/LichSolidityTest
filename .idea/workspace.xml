@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68356285-bfb3-45f3-80bf-742adf6e560e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/10_721_develop/05_721dev_0402.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/10_721_develop/06_721_0402.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/10_721_develop/07_721_0402.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/11_需要开发统计/开发统计.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/10_721_develop/08_721_0402.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +26,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LichWeb3Test" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -73,7 +70,7 @@
       <workItem from="1585590370726" duration="6393000" />
       <workItem from="1585668693817" duration="6652000" />
       <workItem from="1585792715909" duration="2862000" />
-      <workItem from="1585835022087" duration="2925000" />
+      <workItem from="1585835022087" duration="4273000" />
     </task>
     <servers />
   </component>
@@ -85,10 +82,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="500" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1585840696533" />
-    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1585697129256">
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1585843676486">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585697129256" />
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585843676486" />
     <state x="457" y="167" width="621" height="490" key="find.popup" timestamp="1585499363767">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
