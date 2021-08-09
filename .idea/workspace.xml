@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68356285-bfb3-45f3-80bf-742adf6e560e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.deps/npm/@pancakeswap/pancake-swap-lib/contracts/GSN/Context.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.deps/npm/@pancakeswap/pancake-swap-lib/contracts/access/Ownable.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.deps/npm/@pancakeswap/pancake-swap-lib/contracts/math/SafeMath.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.deps/npm/@pancakeswap/pancake-swap-lib/contracts/token/BEP20/IBEP20.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.deps/npm/@pancakeswap/pancake-swap-lib/contracts/token/BEP20/SafeBEP20.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.deps/npm/@pancakeswap/pancake-swap-lib/contracts/utils/Address.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/12_swap/03_pancake.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/12_swap/04_BnbStaking.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/12_swap/artifacts/BnbStaking.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/12_swap/artifacts/BnbStaking_metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/12_swap/artifacts/IWBNB.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/12_swap/artifacts/IWBNB_metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/13_test_swap/BnbStaking.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/13_test_swap/IBEP20.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/13_test_swap/SafeBEP20.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/13_test_swap/SafeMath.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/13_test_swap/BnbStaking.sol" beforeDir="false" afterPath="$PROJECT_DIR$/13_test_swap/BnbStaking.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/13_test_swap/Ownable.sol" beforeDir="false" afterPath="$PROJECT_DIR$/13_test_swap/Ownable.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/13_test_swap/SafeBEP20.sol" beforeDir="false" afterPath="$PROJECT_DIR$/13_test_swap/SafeBEP20.sol" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +76,7 @@
       <workItem from="1585792715909" duration="2862000" />
       <workItem from="1585835022087" duration="7832000" />
       <workItem from="1585923896628" duration="6910000" />
-      <workItem from="1628495620784" duration="5238000" />
+      <workItem from="1628495620784" duration="5546000" />
     </task>
     <servers />
   </component>

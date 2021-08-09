@@ -1,15 +1,17 @@
 pragma solidity 0.6.12;
 
-import '@pancakeswap/pancake-swap-lib/contracts/math/SafeMath.sol';
-import '@pancakeswap/pancake-swap-lib/contracts/token/BEP20/IBEP20.sol';
-import '@pancakeswap/pancake-swap-lib/contracts/token/BEP20/SafeBEP20.sol';
-import '@pancakeswap/pancake-swap-lib/contracts/access/Ownable.sol';
+import './SafeMath.sol';
+import './IBEP20.sol';
+import './SafeBEP20.sol';
+import './Ownable.sol';
 
 // import "@nomiclabs/buidler/console.sol";
 
 interface IWBNB {
     function deposit() external payable;
+
     function transfer(address to, uint256 value) external returns (bool);
+
     function withdraw(uint256) external;
 }
 
@@ -48,7 +50,7 @@ contract BnbStaking is Ownable {
     // Info of each pool.
     PoolInfo[] public poolInfo;
     // Info of each user that stakes LP tokens.
-    mapping (address => UserInfo) public userInfo;
+    mapping(address => UserInfo) public userInfo;
     // limit 10 BNB here
     uint256 public limitAmount = 10000000000000000000;
     // Total allocation poitns. Must be the sum of all allocation points in all pools.
@@ -80,10 +82,10 @@ contract BnbStaking is Ownable {
 
         // staking pool
         poolInfo.push(PoolInfo({
-            lpToken: _lp,
-            allocPoint: 1000,
-            lastRewardBlock: startBlock,
-            accCakePerShare: 0
+        lpToken : _lp,
+        allocPoint : 1000,
+        lastRewardBlock : startBlock,
+        accCakePerShare : 0
         }));
 
         totalAllocPoint = 1000;
@@ -96,7 +98,8 @@ contract BnbStaking is Ownable {
     }
 
     receive() external payable {
-        assert(msg.sender == WBNB); // only accept BNB via fallback from the WBNB contract
+        assert(msg.sender == WBNB);
+        // only accept BNB via fallback from the WBNB contract
     }
 
     // Update admin address by the previous dev.
@@ -173,18 +176,18 @@ contract BnbStaking is Ownable {
         PoolInfo storage pool = poolInfo[0];
         UserInfo storage user = userInfo[msg.sender];
 
-        require (user.amount.add(msg.value) <= limitAmount, 'exceed the top');
-        require (!user.inBlackList, 'in black list');
+        require(user.amount.add(msg.value) <= limitAmount, 'exceed the top');
+        require(!user.inBlackList, 'in black list');
 
         updatePool(0);
         if (user.amount > 0) {
             uint256 pending = user.amount.mul(pool.accCakePerShare).div(1e12).sub(user.rewardDebt);
-            if(pending > 0) {
+            if (pending > 0) {
                 rewardToken.safeTransfer(address(msg.sender), pending);
             }
         }
-        if(msg.value > 0) {
-            IWBNB(WBNB).deposit{value: msg.value}();
+        if (msg.value > 0) {
+            IWBNB(WBNB).deposit{value : msg.value}();
             assert(IWBNB(WBNB).transfer(address(this), msg.value));
             user.amount = user.amount.add(msg.value);
         }
@@ -194,7 +197,7 @@ contract BnbStaking is Ownable {
     }
 
     function safeTransferBNB(address to, uint256 value) internal {
-        (bool success, ) = to.call{gas: 23000, value: value}("");
+        (bool success,) = to.call{gas : 23000, value : value}("");
         // (bool success,) = to.call{value:value}(new bytes(0));
         require(success, 'TransferHelper: ETH_TRANSFER_FAILED');
     }
@@ -206,10 +209,10 @@ contract BnbStaking is Ownable {
         require(user.amount >= _amount, "withdraw: not good");
         updatePool(0);
         uint256 pending = user.amount.mul(pool.accCakePerShare).div(1e12).sub(user.rewardDebt);
-        if(pending > 0 && !user.inBlackList) {
+        if (pending > 0 && !user.inBlackList) {
             rewardToken.safeTransfer(address(msg.sender), pending);
         }
-        if(_amount > 0) {
+        if (_amount > 0) {
             user.amount = user.amount.sub(_amount);
             IWBNB(WBNB).withdraw(_amount);
             safeTransferBNB(address(msg.sender), _amount);
