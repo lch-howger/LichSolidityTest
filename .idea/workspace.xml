@@ -2,9 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68356285-bfb3-45f3-80bf-742adf6e560e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/10_721_develop/13_721_0403.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.deps/npm/@pancakeswap/pancake-swap-lib/contracts/GSN/Context.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.deps/npm/@pancakeswap/pancake-swap-lib/contracts/access/Ownable.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.deps/npm/@pancakeswap/pancake-swap-lib/contracts/math/SafeMath.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.deps/npm/@pancakeswap/pancake-swap-lib/contracts/token/BEP20/IBEP20.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.deps/npm/@pancakeswap/pancake-swap-lib/contracts/token/BEP20/SafeBEP20.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.deps/npm/@pancakeswap/pancake-swap-lib/contracts/utils/Address.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/12_swap/03_pancake.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/12_swap/04_BnbStaking.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/12_swap/artifacts/BnbStaking.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/12_swap/artifacts/BnbStaking_metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/12_swap/artifacts/IWBNB.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/12_swap/artifacts/IWBNB_metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/13_test_swap/BnbStaking.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/13_test_swap/IBEP20.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/13_test_swap/SafeBEP20.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/13_test_swap/SafeMath.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11_需要开发统计/开发统计.txt" beforeDir="false" afterPath="$PROJECT_DIR$/11_需要开发统计/开发统计.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,22 +34,24 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/13_test_swap" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\D\Project\solidity\LichSolidityTest\13_test_swap" />
+      <recent name="C:\D\Project\solidity\LichSolidityTest\12_swap" />
       <recent name="C:\D\Project\LichSolidityTest\08_backup" />
       <recent name="C:\D\Project\LichSolidityTest\03_all_token_files" />
       <recent name="C:\D\Project\LichSolidityTest\04_erc20_test" />
-      <recent name="C:\D\Project\LichSolidityTest\05_erc721_pack" />
-      <recent name="C:\D\Project\LichSolidityTest\erc721_pack" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\D\Project\LichSolidityTest\07_erc721_test" />
@@ -53,6 +69,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -73,24 +90,25 @@
       <workItem from="1585792715909" duration="2862000" />
       <workItem from="1585835022087" duration="7832000" />
       <workItem from="1585923896628" duration="6910000" />
+      <workItem from="1628495620784" duration="5238000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="500" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585840696533">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="500" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1585840696533" />
-    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1585924802376">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585924802376" />
-    <state x="457" y="167" width="621" height="490" key="find.popup" timestamp="1585499363767">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="457" y="167" width="621" height="490" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1585499363767" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
