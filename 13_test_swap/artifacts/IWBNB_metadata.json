@@ -1,0 +1,137 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "transfer",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"13_test_swap/BnbStaking.sol": "IWBNB"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"13_test_swap/Address.sol": {
+			"keccak256": "0x806c8686fdf1afac78d0828ca7941e5ac30282a358d23cf502ec39893c64d4af",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://be41cfa7e8aaf4c95e1517007964cef2470abd47ad578293db4cd25434ee77ea",
+				"dweb:/ipfs/QmPX9qcHJNv1vA6Nxue8c46wxdXwKdLcUyXxEQ91F93u7a"
+			]
+		},
+		"13_test_swap/BnbStaking.sol": {
+			"keccak256": "0x9b1b6c403ae538eb319a88fe7a4e5149371851d1b6751123f60ac46416496fb3",
+			"urls": [
+				"bzz-raw://a21f58c9163842263d731f7b553a767caa06c7ac49567de4126663eaf38a9a9b",
+				"dweb:/ipfs/QmWDzzGaKa2adQKswqBnAF2UXz9AJNhNWpuFMVV7VS5o5k"
+			]
+		},
+		"13_test_swap/Context.sol": {
+			"keccak256": "0xb5d5654ea9545f91be35321202e885255490867560afbc0c6a55f8b6c4068386",
+			"license": "GPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://ad45743b2fb8322c467618955a89bb82e40b6b730f19c04bf4b0e5eb6d25f39b",
+				"dweb:/ipfs/QmR7HdkW9VsAeiSQRrA3LntW36RCv5iczoLkBcQpTc2UYo"
+			]
+		},
+		"13_test_swap/IBEP20.sol": {
+			"keccak256": "0xcca9eeefad9d3c8a68e426833a5c790d055beebc3f1cefbeac20b096456c9aef",
+			"license": "GPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://61090ac66da4fcf117cb95119cda4c45b5bcf9f8a48203444b0f97b39a9ccbd1",
+				"dweb:/ipfs/Qmb1XnfUGdZ7ma31WqhGMaE9mWug1erEUh8xEYvvjZ5v4r"
+			]
+		},
+		"13_test_swap/Ownable.sol": {
+			"keccak256": "0x97f2822f683b88692b7d13ce0e6130ebd2fa99dfe4dcc0ce4008b64245100c95",
+			"license": "GPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://87fbf2011e7ca9c11ceff01f8ee707a6431c7c94b2d8e9bb52629a1764731c82",
+				"dweb:/ipfs/QmZzzfyM8ii4auQF4ysJoDHCofRNNDScFoUYuZZmZWhiDa"
+			]
+		},
+		"13_test_swap/SafeBEP20.sol": {
+			"keccak256": "0xe19de1d6a6f4e6e0101d3ae93ad7fe7174cd79f60c5affbf2d0a1a572df1040d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3d381ca3a50fc2c999c4b289dde5d5da899a8ef6bb8e17493b09372848e2e952",
+				"dweb:/ipfs/QmdhRhMof1BUYdUcFRKxpg7KxTB1Sgp5Kj1eukWr1b9DHE"
+			]
+		},
+		"13_test_swap/SafeMath.sol": {
+			"keccak256": "0xd4b1686c1494213666dc1423cea64333c3063f334327216d69ca3d59f75a2517",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3a3c967dc005a8966266b6052724b7cd04231c6d95abcc03f49e1cbb9ffb890a",
+				"dweb:/ipfs/QmRWofmmac5HLRYpMTDQLzmgZyJYeYLB2MY8uTFRKfJuJL"
+			]
+		}
+	},
+	"version": 1
+}

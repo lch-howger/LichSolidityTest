@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="68356285-bfb3-45f3-80bf-742adf6e560e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/13_test_swap/BnbStaking.sol" beforeDir="false" afterPath="$PROJECT_DIR$/13_test_swap/BnbStaking.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/13_test_swap/Ownable.sol" beforeDir="false" afterPath="$PROJECT_DIR$/13_test_swap/Ownable.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/13_test_swap/SafeBEP20.sol" beforeDir="false" afterPath="$PROJECT_DIR$/13_test_swap/SafeBEP20.sol" afterDir="false" />
-    </list>
+    <list default="true" id="68356285-bfb3-45f3-80bf-742adf6e560e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +72,7 @@
       <workItem from="1585792715909" duration="2862000" />
       <workItem from="1585835022087" duration="7832000" />
       <workItem from="1585923896628" duration="6910000" />
-      <workItem from="1628495620784" duration="5546000" />
+      <workItem from="1628495620784" duration="5967000" />
     </task>
     <servers />
   </component>
