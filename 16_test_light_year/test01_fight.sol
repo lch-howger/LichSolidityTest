@@ -1,26 +1,47 @@
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.6;
 
-/**
- * @title Storage
- * @dev Store & retreive value in a variable
- */
-contract Storage {
+contract LightYear {
 
     uint256 number;
 
-    /**
-     * @dev Store value in variable
-     * @param num value to store
-     */
     function store(uint256 num) public {
         number = num;
     }
 
-    /**
-     * @dev Return value
-     * @return value of 'number'
-     */
     function retreive() public view returns (uint256){
         return number;
     }
+    
+    struct Ship {
+      uint32 attack;
+      uint32 defense;
+      uint32 agility;
+      uint32 accuracy;
+      uint32 capacity;
+      uint32 speed;
+      uint16 health;
+      uint8 shipType;
+      uint8 level;
+      uint8 quality;
+      uint8 recovery;
+      uint8 coolDown;
+      uint8 extra0;
+    }  
+    
+    struct Hero {
+      uint32 attack;
+      uint32 defense;
+      uint32 agility;
+      uint32 accuracy;
+      uint32 capacity;
+      uint32 speed;
+      uint16 health;
+      uint8 shipType;
+      uint8 level;
+      uint8 quality;
+      uint8 recovery;
+      uint8 coolDown;
+      uint8 extra0;
+    }  
 }
