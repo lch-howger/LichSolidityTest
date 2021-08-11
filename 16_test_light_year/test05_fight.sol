@@ -16,38 +16,43 @@ contract LightYearTest {
     }
 
     function pureBattle() public pure returns (bytes memory){
-        Ship memory attacker = Ship(100, 100, 100, 100, 100);
-        Ship memory defender = Ship(100, 100, 100, 100, 100);
+        Ship memory attacker = Ship(100, 100, 100, 100, 500);
+        Ship memory defender = Ship(100, 100, 100, 100, 500);
 
+        //result of battle
         bytes memory battleBytes = "";
 
+        //count of round
         uint256 count = 0;
+        
+        //start battle
         while (true) {
+            
+            //limit count
             count++;
-            if (count >= 20) {
+            if (count >= 100) {
                 break;
             }
 
+            //attack round
             uint16 damage = _attack(attacker, defender);
             defender.health = _causeDamage(defender.health, damage);
-
             battleBytes = _addBytes(battleBytes, defender.health);
-
             if (defender.health <= 0) {
                 break;
             }
 
+            //defense round
             damage = _attack(defender, attacker);
             attacker.health = _causeDamage(attacker.health, damage);
-
             battleBytes = _addBytes(battleBytes, attacker.health);
-
             if (attacker.health <= 0) {
                 break;
             }
 
         }
 
+        //return result of battle
         return battleBytes;
     }
 
@@ -58,11 +63,8 @@ contract LightYearTest {
 
     function _attack(Ship memory attacker, Ship memory defender) private pure returns (uint16){
         uint16 damage = attacker.attack + attacker.attack * attacker.accuracy / (attacker.attack + attacker.accuracy);
-
         uint16 resist = defender.defense + defender.defense * defender.agility / (defender.defense + defender.agility);
-
         uint16 realDamage = damage * damage / (damage + resist);
-
         return realDamage;
 
     }
