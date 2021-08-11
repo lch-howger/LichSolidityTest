@@ -1,0 +1,85 @@
+uint256 public constant FLEET_SHIP_LIMIT = 5;
+
+struct Ship {
+  uint32 attack;
+  uint32 defense;
+  uint32 agility;
+  uint32 accuracy;
+  uint32 capacity;
+  uint32 speed;
+  uint16 health;
+  uint8 type;
+  uint8 level;
+  uint8 quality;
+  uint8 recovery;
+  uint8 coolDown;
+  uint8 extra0;
+}  // 256-bits
+
+// tokenId => Ship
+mapping(uint256 => Ship) public shipMap;
+
+struct Hero {
+  uint32 attack;
+  uint32 defense;
+  uint32 agility;
+  uint32 accuracy;
+  uint32 capacity;
+  uint32 speed;
+  uint16 health;
+  uint8 type;
+  uint8 level;
+  uint8 quality;
+  uint8 recovery;
+  uint8 coolDown;
+  uint8 extra0;
+}  // 256-bits
+
+// tokenId => Hero
+mapping(uint256 => Hero) public heroMap;
+
+struct Fleet {
+  uint32[FLEET_SHIP_LIMIT] shipIdArray;
+  uint32[FLEET_SHIP_LIMIT] heroIdArray;
+  uint32 fromPId;
+  uint32 toPId;
+  uint32 time;  // task began at
+  uint32 status;  // task status
+  uint32 extra0;
+  uint32 extra1;
+}  // 256-bits * 2
+
+// who => Fleet[]
+mapping(address => Fleet[]) public fleetMap;
+
+function battle(address who0_, address who1_, uint256 fleetIndex0_, uint256 fleetIndex1_) public view returns(bytes) {
+}
+
+function _findRandomTarget() {
+}
+
+/*
+1 bit => 0 / 1 (1)
+
+ (16) * 10 => health
+= 160 bits
+
+0/1(1) 0(1) 1(1) 4(3) 3(3) => 8bit or 1 byte  * 40
+ (16) => 2 byte * 40
+= 24 bits * 40
+
+struct {
+  uint8 direction;  // 4 types, fromIndex, toIndex
+  uint8 attributeIndex;
+  uint32 delta;
+}
+48 bits * 40  / 80
+
+mapping(address => bytes[])
+
+struct UserInfo {
+  
+}
+
+======> 5 - 6 256-bit memory
+*/
