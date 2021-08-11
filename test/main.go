@@ -18,11 +18,11 @@ import "fmt"
 */
 
 type Hero struct {
-	Attack   int
-	Defense  int
-	Agility  int
-	Accuracy int
-	Health   int
+	attack   int
+	defense  int
+	agility  int
+	accuracy int
+	health   int
 }
 
 func main() {
@@ -38,7 +38,7 @@ func test01() {
 		count++
 		damage, health := attack(&attacker, &defender)
 		fmt.Printf("第%v回合,attacker进行攻击,造成%v点伤害,defender还剩余%v\n", count, damage, health)
-		if defender.Health <= 0 {
+		if defender.health <= 0 {
 			fmt.Println("战斗结束,attacker获胜")
 			break
 		}
@@ -46,7 +46,7 @@ func test01() {
 		count++
 		damage, health = attack(&defender, &attacker)
 		fmt.Printf("第%v回合,defender进行攻击,造成%v点伤害,attacker还剩余%v\n", count, damage, health)
-		if attacker.Health <= 0 {
+		if attacker.health <= 0 {
 			fmt.Println("战斗结束,defender获胜")
 			break
 		}
@@ -54,11 +54,11 @@ func test01() {
 }
 
 func attack(attacker *Hero, defender *Hero) (int, int) {
-	damage := attacker.Attack + attacker.Attack*attacker.Accuracy/(attacker.Attack+attacker.Accuracy)
-	resist := defender.Defense + defender.Defense*defender.Agility/(defender.Defense+defender.Agility)
+	damage := attacker.attack + attacker.attack*attacker.accuracy/(attacker.attack+attacker.accuracy)
+	resist := defender.defense + defender.defense*defender.agility/(defender.defense+defender.agility)
 
 	realDamage := damage * damage / (damage + resist)
-	defender.Health -= realDamage
+	defender.health -= realDamage
 
-	return realDamage, defender.Health
+	return realDamage, defender.health
 }
