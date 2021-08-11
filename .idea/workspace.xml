@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="68356285-bfb3-45f3-80bf-742adf6e560e" name="Default Changelist" comment="" />
+    <list default="true" id="68356285-bfb3-45f3-80bf-742adf6e560e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/16_test_light_year/ArrayUtils.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/16_test_light_year/test02_sanguo.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LichSolidityTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LichSolidityTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/16_test_light_year/test01_fight.sol" beforeDir="false" afterPath="$PROJECT_DIR$/16_test_light_year/test01_fight.sol" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Solidity Contract" />
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../Program Files/Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1ZgsptmJCpnNG4yf1KiRob6wwG7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -20,24 +47,45 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/13_test_swap" />
+    <property name="go.formatter.settings.were.checked" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\D\Project\solidity\LichSolidityTest\test" />
+      <recent name="C:\D\Project\solidity\LichSolidityTest\16_test_light_year" />
       <recent name="C:\D\Project\solidity\LichSolidityTest\13_test_swap" />
       <recent name="C:\D\Project\solidity\LichSolidityTest\12_swap" />
       <recent name="C:\D\Project\LichSolidityTest\08_backup" />
-      <recent name="C:\D\Project\LichSolidityTest\03_all_token_files" />
-      <recent name="C:\D\Project\LichSolidityTest\04_erc20_test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\D\Project\LichSolidityTest\07_erc721_test" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="LichSolidityTest" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/test/main.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build main.go" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -73,6 +121,9 @@
       <workItem from="1585835022087" duration="7832000" />
       <workItem from="1585923896628" duration="6910000" />
       <workItem from="1628495620784" duration="6287000" />
+      <workItem from="1628588994673" duration="839000" />
+      <workItem from="1628646347422" duration="1181000" />
+      <workItem from="1628650299841" duration="1539000" />
     </task>
     <servers />
   </component>
@@ -89,8 +140,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
