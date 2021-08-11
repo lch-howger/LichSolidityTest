@@ -26,15 +26,12 @@ type Hero struct {
 }
 
 func main() {
-	//attacker := Hero{100, 100, 100, 100, 100}
-	//defender := Hero{100, 100, 100, 100, 100}
-
 	test01()
 }
 
 func test01() {
-	attacker := Hero{100, 100, 100, 100, 10000}
-	defender := Hero{100, 100, 100, 100, 10000}
+	attacker := Hero{500, 100, 100, 100, 1000}
+	defender := Hero{100, 100, 100, 100, 1000}
 
 	count := 0
 	for {
@@ -58,6 +55,10 @@ func test01() {
 
 func attack(attacker *Hero, defender *Hero) (int, int) {
 	damage := attacker.Attack + attacker.Attack*attacker.Accuracy/(attacker.Attack+attacker.Accuracy)
-	defender.Health -= damage
-	return damage, defender.Health
+	resist := defender.Defense + defender.Defense*defender.Agility/(defender.Defense+defender.Agility)
+
+	realDamage := damage * damage / (damage + resist)
+	defender.Health -= realDamage
+
+	return realDamage, defender.Health
 }
