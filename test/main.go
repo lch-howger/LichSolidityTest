@@ -18,11 +18,11 @@ import "fmt"
 */
 
 type Hero struct {
-	Attack   uint
-	Defense  uint
-	Agility  uint
-	Accuracy uint
-	Health   uint
+	Attack   int
+	Defense  int
+	Agility  int
+	Accuracy int
+	Health   int
 }
 
 func main() {
@@ -37,7 +37,7 @@ func test01() {
 	defender := Hero{100, 100, 100, 100, 10000}
 
 	count := 0
-	for i := 0; i < 10; i++ {
+	for {
 		count++
 		damage, health := attack(&attacker, &defender)
 		fmt.Printf("第%v回合,attacker进行攻击,造成%v点伤害,defender还剩余%v\n", count, damage, health)
@@ -56,7 +56,7 @@ func test01() {
 	}
 }
 
-func attack(attacker *Hero, defender *Hero) (uint, uint) {
+func attack(attacker *Hero, defender *Hero) (int, int) {
 	damage := attacker.Attack + attacker.Attack*attacker.Accuracy/(attacker.Attack+attacker.Accuracy)
 	defender.Health -= damage
 	return damage, defender.Health
