@@ -43,6 +43,7 @@ contract TestLightYear is ERC721 {
     
     mapping(address =>uint256[]) private _ownerTokenListMap;
     mapping(uint256 => Ship) private _tokenIdShipMap;
+    mapping(uint256 => Hero) private _tokenIdHeroMap;
    
     mapping(address=>UserInfo) private _userInfoMap;
 
@@ -134,22 +135,42 @@ contract TestLightYear is ERC721 {
     function lightYear_mintShip() public {
        uint256 _tokenId= _mint();
         
-        Ship memory ship=Ship(100, 100, 100, 100, 500);
+       Ship memory ship= _createShip();
         _tokenIdShipMap[_tokenId]=ship;
         
        UserInfo storage user=  _userInfoMap[msg.sender];
        if (user.fleetsSize==0){
            _createUser();
-           
        }
        
        Fleet storage lastFleet=user.fleets[user.fleetsSize];
        if(lastFleet.shipIdArray.length<FLEET_SHIP_LIMIT){
            lastFleet.shipIdArray.push(_tokenId);
        }else{
-           _userCreateNewFleet();
+           _createFleet();
            Fleet storage newFleet=user.fleets[user.fleetsSize];
          newFleet.shipIdArray.push(_tokenId);
+       }
+    }
+
+     function lightYear_mintHero() public {
+       uint256 _tokenId= _mint();
+        
+       Hero memory hero= _createHero();
+        _tokenIdHeroMap[_tokenId]=hero;
+        
+       UserInfo storage user=  _userInfoMap[msg.sender];
+       if (user.fleetsSize==0){
+           _createUser();
+       }
+       
+       Fleet storage lastFleet=user.fleets[user.fleetsSize];
+       if(lastFleet.heroIdArray.length<FLEET_HERO_LIMIT){
+           lastFleet.heroIdArray.push(_tokenId);
+       }else{
+           _createFleet();
+           Fleet storage newFleet=user.fleets[user.fleetsSize];
+         newFleet.heroIdArray.push(_tokenId);
        }
     }
 
@@ -162,12 +183,24 @@ contract TestLightYear is ERC721 {
         return user.fleetsSize;
     }
 
- function lightYear_userFleets(uint256 i) public view returns(uint256[] memory){
+ function lightYear_userFleets(uint256 i) public view returns(uint256[] memory,uint256[] memory){
         UserInfo storage user =_userInfoMap[msg.sender];
-        return user.fleets[i].shipIdArray;
+        uint256[] memory shipArr=user.fleets[i].shipIdArray;
+        uint256[] memory heroArr=user.fleets[i].heroIdArray;
+        return (shipArr,heroArr);
     }
 
-    function _userCreateNewFleet() private returns(Fleet memory){
+    function _createShip() private pure returns(Ship memory){
+            Ship memory ship=Ship(100, 100, 100, 100, 500);
+              return ship;
+        }
+        
+    function _createHero() private pure returns(Hero memory){
+        Hero memory hero=Hero(100, 100, 100, 100, 500);
+          return hero;
+    }
+
+    function _createFleet() private returns(Fleet memory){
         UserInfo storage user =_userInfoMap[msg.sender];
           uint256[] memory shipIdArray=new uint256[](FLEET_SHIP_LIMIT);
           uint256[] memory heroIdArray=new uint256[](FLEET_HERO_LIMIT);
