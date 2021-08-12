@@ -31,17 +31,16 @@ interface ERC165 {
 
 contract TestLightYear is ERC721 {
 
+    uint8 constant MAX_UINT8 = 255;
+    uint16 constant MAX_UINT16 = 65535;
+    uint32 constant MAX_UINT32 = 4294967295;
+
     uint256 totalSupply = 0;
     mapping(address => uint256) private _ownerTokenAmountMap;
     mapping(uint256 => address) private _tokenIdOwnerMap;
-
-    function balanceOf(address _owner) override external view returns (uint256){
-        return _ownerTokenAmountMap[_owner];
-    }
-
-    function ownerOf(uint256 _tokenId) override external view returns (address){
-        return _tokenIdOwnerMap[_tokenId];
-    }
+    
+    mapping(uint256 => Ship) public _tokenIdShipMap;
+   
 
      struct Ship {
         uint16 attack;
@@ -49,6 +48,16 @@ contract TestLightYear is ERC721 {
         uint16 agility;
         uint16 accuracy;
         uint16 health;
+        // uint16 level;
+        // uint16 quality;
+    }
+    
+    function balanceOf(address _owner) override external view returns (uint256){
+        return _ownerTokenAmountMap[_owner];
+    }
+
+    function ownerOf(uint256 _tokenId) override external view returns (address){
+        return _tokenIdOwnerMap[_tokenId];
     }
 
     function pureBattle() public pure returns (bytes memory){
@@ -134,7 +143,13 @@ contract TestLightYear is ERC721 {
         _tokenIdOwnerMap[_tokenId] = msg.sender;
         emit Transfer(address(0), msg.sender, _tokenId);
         totalSupply += 1;
+        
+        
+        Ship memory ship=Ship(100, 100, 100, 100, 500);
+        _tokenIdShipMap[_tokenId]=ship;
+
     }
+
 
     function transfer() public {
 
