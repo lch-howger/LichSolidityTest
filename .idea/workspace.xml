@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68356285-bfb3-45f3-80bf-742adf6e560e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/16_test_light_year/ArrayUtils.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/16_test_light_year/test02_sanguo.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LichSolidityTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LichSolidityTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/16_test_light_year/test01_fight.sol" beforeDir="false" afterPath="$PROJECT_DIR$/16_test_light_year/test01_fight.sol" afterDir="false" />
-    </list>
+    <list default="true" id="68356285-bfb3-45f3-80bf-742adf6e560e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +49,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
