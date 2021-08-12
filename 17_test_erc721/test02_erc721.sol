@@ -29,7 +29,7 @@ interface ERC165 {
     function supportsInterface(bytes4 interfaceID) external view returns (bool);
 }
 
-contract TestEasy721Token is ERC721 {
+contract TestLightYear is ERC721 {
 
     uint256 totalSupply = 0;
     mapping(address => uint256) private _ownerTokenAmountMap;
@@ -48,7 +48,6 @@ contract TestEasy721Token is ERC721 {
         _ownerTokenAmountMap[msg.sender] += 1;
         _tokenIdOwnerMap[_tokenId] = msg.sender;
         emit Transfer(address(0), msg.sender, _tokenId);
-
         totalSupply += 1;
     }
 
