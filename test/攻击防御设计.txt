@@ -1,4 +1,30 @@
 
+  uint32 defense;
+  uint32 agility;
+  uint32 accuracy;
+  uint32 capacity;
+  uint32 speed;
+  uint16 health;
+  uint8 type;
+  uint8 level;
+  uint8 quality;
+  uint8 recovery;
+  uint8 coolDown;
+  uint8 extra0;
+
+1.攻击
+2.防御
+3.敏捷
+4.命中率
+5.运载量(无关)
+6.速度(无关)
+7.血量
+8.类型
+9.等级
+10.质量
+11.自我修复能力
+12.冷却时间
+
 
 1.攻击
 2.防御
