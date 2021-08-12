@@ -2,3 +2,4 @@
 *.json
 *.xml
 *.xml
+.idea/workspace.xml
