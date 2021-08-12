@@ -31,6 +31,8 @@ interface ERC165 {
 
 contract TestLightYear is ERC721 {
 
+    uint8  constant FLEET_SHIP_LIMIT = 5;
+    uint8 constant FLEET_HERO_LIMIT=5;
     uint8 constant MAX_UINT8 = 255;
     uint16 constant MAX_UINT16 = 65535;
     uint32 constant MAX_UINT32 = 4294967295;
@@ -39,8 +41,16 @@ contract TestLightYear is ERC721 {
     mapping(address => uint256) private _ownerTokenAmountMap;
     mapping(uint256 => address) private _tokenIdOwnerMap;
     
-    mapping(uint256 => Ship) public _tokenIdShipMap;
+    mapping(address =>uint256[]) private _ownerTokenListMap;
+    mapping(uint256 => Ship) private _tokenIdShipMap;
    
+    mapping(address=>UserInfo) private _userInfoMap;
+
+    struct UserInfo{
+        string nickname;
+        mapping(uint256=>Fleet) fleets;
+        uint256 fleetsSize;
+    }
 
      struct Ship {
         uint16 attack;
@@ -51,16 +61,21 @@ contract TestLightYear is ERC721 {
         // uint16 level;
         // uint16 quality;
     }
-    
-    function balanceOf(address _owner) override external view returns (uint256){
-        return _ownerTokenAmountMap[_owner];
+
+    struct Hero{
+        uint16 attack;
+        uint16 defense;
+        uint16 agility;
+        uint16 accuracy;
+        uint16 health;
     }
 
-    function ownerOf(uint256 _tokenId) override external view returns (address){
-        return _tokenIdOwnerMap[_tokenId];
+    struct Fleet{
+        uint256[] shipIdArray;
+        uint256[] heroIdArray;
     }
 
-    function pureBattle() public pure returns (bytes memory){
+    function lightYear_pureBattle() public pure returns (bytes memory){
         Ship memory attacker = Ship(100, 100, 100, 100, 500);
         Ship memory defender = Ship(100, 100, 100, 100, 500);
 
@@ -101,6 +116,38 @@ contract TestLightYear is ERC721 {
         return battleBytes;
     }
 
+    function lightYear_mintShip() public {
+       uint256 _tokenId= _mint();
+        
+        Ship memory ship=Ship(100, 100, 100, 100, 500);
+        _tokenIdShipMap[_tokenId]=ship;
+        
+       UserInfo storage user=  _userInfoMap[msg.sender];
+       Fleet storage lastFleet=user.fleets[user.fleetsSize];
+       if(lastFleet.shipIdArray.length<FLEET_SHIP_LIMIT){
+           lastFleet.shipIdArray.push(_tokenId);
+       }else{
+           uint256[] memory shipIdArray=new uint256[](FLEET_SHIP_LIMIT);
+           uint256[] memory heroIdArray=new uint256[](FLEET_HERO_LIMIT);
+           Fleet memory newFleet=Fleet(shipIdArray,heroIdArray);
+           user.fleetsSize+=1;
+           user.fleets[user.fleetsSize]=newFleet;
+       }
+    }
+
+    function lightYear_ownerTokenList() public view  returns(uint256[] memory){
+        return _ownerTokenListMap[msg.sender];
+    }
+
+    function lightYear_userInfo() public view returns(uint256 ){
+        UserInfo storage user =_userInfoMap[msg.sender];
+        return user.fleetsSize;
+    }
+
+    function _userAddShip() private{
+        
+    }
+
     function _addBytes(bytes memory b, uint16 i) private pure returns (bytes memory){
         return _mergeBytes(b, abi.encodePacked(i));
     }
@@ -137,22 +184,28 @@ contract TestLightYear is ERC721 {
         }
     }
 
-    function mintShip() public {
+    function _mint()private returns (uint256){
         uint256 _tokenId = totalSupply + 1;
         _ownerTokenAmountMap[msg.sender] += 1;
         _tokenIdOwnerMap[_tokenId] = msg.sender;
         emit Transfer(address(0), msg.sender, _tokenId);
+        
         totalSupply += 1;
+        _ownerTokenListMap[msg.sender].push(_tokenId);
         
-        
-        Ship memory ship=Ship(100, 100, 100, 100, 500);
-        _tokenIdShipMap[_tokenId]=ship;
+        return _tokenId;
+    }    
+
+    function _transfer() private {
 
     }
 
+    function balanceOf(address _owner) override external view returns (uint256){
+        return _ownerTokenAmountMap[_owner];
+    }
 
-    function transfer() public {
-
+    function ownerOf(uint256 _tokenId) override external view returns (address){
+        return _tokenIdOwnerMap[_tokenId];
     }
 
     function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes memory data) override external payable {
