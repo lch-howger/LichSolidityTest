@@ -1,0 +1,26 @@
+
+
+1个字节
+bin- 0000 0000
+0-255
+
+  uint8 direction;  // 4 types, fromIndex, toIndex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
