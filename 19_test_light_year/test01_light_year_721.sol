@@ -50,7 +50,7 @@ contract TestLightYear is ERC721 {
     struct UserInfo{
         string nickname;
         Fleet[] fleets;
-        BattleInfo[] battleHistory;
+        bytes[] battleHistory;
     }
 
      struct Ship {
@@ -83,28 +83,24 @@ contract TestLightYear is ERC721 {
     }
 
       function test03_getBytes() public  {
-          UserInfo storage user= _userInfoMap[msg.sender];
-          
-          uint256[] memory shipIdArray=new uint256[](FLEET_SHIP_LIMIT);
-          uint256[] memory heroIdArray=new uint256[](FLEET_HERO_LIMIT);
-          Fleet memory newFleet=Fleet(shipIdArray,heroIdArray);
-          user.fleets.push(newFleet);
+         for(uint i=0;i<100;i++){
+             test02_getBytes();
+         }
       }
 
     function test02_getBytes() public  {
        UserInfo storage user= _userInfoMap[msg.sender];
-     BattleInfo[] storage battleHistory=  user.battleHistory;
-     BattleInfo memory info=BattleInfo(1,1,100);
-     battleHistory.push(info);
+    //  BattleInfo[] storage battleHistory=  user.battleHistory;
+    //  BattleInfo memory info=BattleInfo(100);
+    //  battleHistory.push(info);
+    
+        bytes memory b="aaaaabbbbbccccc";
+        user.battleHistory.push(b);
+        
     }
 
     function test01_getBytes() public pure returns(bytes memory){
-        BattleInfo memory b0=BattleInfo(1,1,100);
-        BattleInfo memory b1=BattleInfo(2,2,200);
-        BattleInfo[] memory arr= new BattleInfo[](2);
-        arr[0]=b0;
-        arr[1]=b1;
-        return "01";
+        
     }
 
     function lightYear_pureBattle() public pure returns (bytes memory){
