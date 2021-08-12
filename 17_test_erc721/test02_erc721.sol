@@ -123,15 +123,18 @@ contract TestLightYear is ERC721 {
         _tokenIdShipMap[_tokenId]=ship;
         
        UserInfo storage user=  _userInfoMap[msg.sender];
+       if (user.fleetsSize==0){
+           _createUser();
+           
+       }
+       
        Fleet storage lastFleet=user.fleets[user.fleetsSize];
        if(lastFleet.shipIdArray.length<FLEET_SHIP_LIMIT){
            lastFleet.shipIdArray.push(_tokenId);
        }else{
-           uint256[] memory shipIdArray=new uint256[](FLEET_SHIP_LIMIT);
-           uint256[] memory heroIdArray=new uint256[](FLEET_HERO_LIMIT);
-           Fleet memory newFleet=Fleet(shipIdArray,heroIdArray);
-           user.fleetsSize+=1;
-           user.fleets[user.fleetsSize]=newFleet;
+           _userCreateNewFleet();
+           Fleet storage newFleet=user.fleets[user.fleetsSize];
+         newFleet.shipIdArray.push(_tokenId);
        }
     }
 
@@ -139,9 +142,33 @@ contract TestLightYear is ERC721 {
         return _ownerTokenListMap[msg.sender];
     }
 
-    function lightYear_userInfo() public view returns(uint256 ){
+    function lightYear_userFleetsSize() public view returns(uint256 ){
         UserInfo storage user =_userInfoMap[msg.sender];
         return user.fleetsSize;
+    }
+
+ function lightYear_userFleets(uint256 i) public view returns(uint256[] memory){
+        UserInfo storage user =_userInfoMap[msg.sender];
+        return user.fleets[i].shipIdArray;
+    }
+
+    function _userCreateNewFleet() private returns(Fleet memory){
+        UserInfo storage user =_userInfoMap[msg.sender];
+          uint256[] memory shipIdArray=new uint256[](FLEET_SHIP_LIMIT);
+          uint256[] memory heroIdArray=new uint256[](FLEET_HERO_LIMIT);
+          Fleet memory newFleet=Fleet(shipIdArray,heroIdArray);
+            user.fleetsSize+=1;
+          user.fleets[user.fleetsSize]=newFleet;
+          return newFleet;
+    }
+
+    function _createUser() private{
+        UserInfo storage user=  _userInfoMap[msg.sender];
+        uint256[] memory shipIdArray=new uint256[](0);
+        uint256[] memory heroIdArray=new uint256[](0);
+        Fleet memory newFleet=Fleet(shipIdArray,heroIdArray);
+        user.fleetsSize=1;
+        user.fleets[user.fleetsSize]=newFleet;
     }
 
     function _userAddShip() private{
