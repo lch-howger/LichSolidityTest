@@ -75,6 +75,21 @@ contract TestLightYear is ERC721 {
         uint256[] heroIdArray;
     }
 
+    struct BattleInfo{
+        uint8 direction;
+        uint8 attributeIndex;
+        uint32 delta;
+    }
+
+    function test_getBytes() public pure returns(bytes memory){
+        BattleInfo memory b0=BattleInfo(1,1,100);
+        BattleInfo memory b1=BattleInfo(2,2,200);
+        BattleInfo[] memory arr= new BattleInfo[](2);
+        arr[0]=b0;
+        arr[1]=b1;
+        return "01";
+    }
+
     function lightYear_pureBattle() public pure returns (bytes memory){
         Ship memory attacker = Ship(100, 100, 100, 100, 500);
         Ship memory defender = Ship(100, 100, 100, 100, 500);
