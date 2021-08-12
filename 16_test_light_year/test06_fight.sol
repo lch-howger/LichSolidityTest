@@ -98,6 +98,13 @@ contract LightYearTest {
         b[1]="bbb";
         return b;
     }
+    
+    function getBytes2() public pure returns(bytes[] memory){
+        bytes[] memory b=new bytes[](3);
+        b[0]="aaa";
+        b[1]="bbb";
+        return b;
+    }
 }
 
 
