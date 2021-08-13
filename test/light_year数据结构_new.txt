@@ -60,6 +60,10 @@ Ropsten     部署合约        11.10秒
 Ropsten     存300字节       6.19秒
 Goerli      部署合约        23.75秒
 Goerli      存300字节      17.45秒
+HecoTest    部署合约        6.53
+HecoTest    存300字节       6.23
+BscTest     部署合约        50
+BscTest     存300字节       50
 
 
 
