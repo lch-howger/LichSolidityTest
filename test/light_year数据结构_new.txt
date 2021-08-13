@@ -1,10 +1,26 @@
 
+struct {
+  uint8 direction;  // 4 types, fromIndex, toIndex
+  uint8 attributeIndex;
+  uint32 delta;
+}
 
 1个字节
 bin- 0000 0000
 0-255
 
   uint8 direction;  // 4 types, fromIndex, toIndex
+
+
+//如果暂时分开
+struct {
+  uint8 battle_type;
+  uint8 fromIndex;
+  uint8 toIndex;
+  uint8 attributeIndex;
+  uint32 delta;
+}
+
 
 
 
