@@ -64,7 +64,7 @@ HecoTest    部署合约        6.53
 HecoTest    存300字节       6.23
 BscTest     部署合约        50
 BscTest     存300字节       50
-
+infura连接Ropsten 70秒
 
 
 
