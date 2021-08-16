@@ -150,14 +150,41 @@ contract TestLightYear is ERC721 {
             }
         }
         
+        uint256 round=2;
+        
         //battle info
-        BattleInfo[] memory battleInfo=new BattleInfo[](20);
+        BattleInfo[] memory battleInfo=new BattleInfo[](round);
         
         //battle
-        for(uint i=0;i<2;i++){
+        for(uint i=0;i<round;i++){
             
-            BattleInfo memory info=BattleInfo(0x00,0,0,0,0,1);
-            bytes memory b=_battleInfoToBytes(info);
+            if(i%2==0){
+                //attacker round
+                uint8 battleType=0;
+                uint8 fromIndex=uint8(_random(attackerLen));
+                uint8 toIndex =uint8(_random(defenderLen));
+                uint8 attributeIndex=6;
+                uint32 delta=65535;
+                
+                BattleInfo memory info=BattleInfo(0x00,battleType,fromIndex,toIndex,attributeIndex,delta);
+                battleInfo[i]=info;
+            }else{
+                //defender round
+                uint8 battleType=1;
+                uint8 fromIndex=uint8(_random(defenderLen));
+                uint8 toIndex =uint8(_random(attackerLen));
+                uint8 attributeIndex=6;
+                uint32 delta=65535;
+                
+                BattleInfo memory info=BattleInfo(0x00,battleType,fromIndex,toIndex,attributeIndex,delta);
+                battleInfo[i]=info;
+            }
+            
+            
+        }
+        
+        for(uint i=0;i<battleInfo.length;i++){
+            bytes memory b=_battleInfoToBytes(battleInfo[i]);
             result=_mergeBytes(result,b);
         }
         
@@ -191,15 +218,25 @@ contract TestLightYear is ERC721 {
     /**
      * get random number
      */
-    uint256 nonce;
-    function _random(uint256 randomSize) private returns(uint256){
-        nonce++;
+    // uint256 nonce;
+    // function _random(uint256 randomSize) private returns(uint256){
+    //     nonce++;
+    //     uint256 difficulty=block.difficulty;
+    //     uint256 gaslimit=block.gaslimit;
+    //     uint256 number=block.number;
+    //     uint256 timestamp=block.timestamp;
+    //     uint256 gasprice=tx.gasprice;
+    //     uint256 random = uint256(keccak256(abi.encodePacked(nonce,difficulty,gaslimit,number,timestamp,gasprice))) % randomSize;
+    //     return random;
+    // }
+
+    function _random(uint256 randomSize) private view returns(uint256){
         uint256 difficulty=block.difficulty;
         uint256 gaslimit=block.gaslimit;
         uint256 number=block.number;
         uint256 timestamp=block.timestamp;
         uint256 gasprice=tx.gasprice;
-        uint256 random = uint256(keccak256(abi.encodePacked(nonce,difficulty,gaslimit,number,timestamp,gasprice))) % randomSize;
+        uint256 random = uint256(keccak256(abi.encodePacked(difficulty,gaslimit,number,timestamp,gasprice))) % randomSize;
         return random;
     }
 
