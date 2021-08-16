@@ -32,7 +32,7 @@ interface ERC165 {
 contract TestLightYear is ERC721 {
 
     uint8  constant FLEET_SHIP_LIMIT = 5;
-    uint8 constant FLEET_HERO_LIMIT=5;
+    uint8 constant FLEET_HERO_LIMIT = 5;
     uint8 constant MAX_UINT8 = 255;
     uint16 constant MAX_UINT16 = 65535;
     uint32 constant MAX_UINT32 = 4294967295;
@@ -40,20 +40,20 @@ contract TestLightYear is ERC721 {
     uint256 totalSupply = 0;
     mapping(address => uint256) private _ownerTokenAmountMap;
     mapping(uint256 => address) private _tokenIdOwnerMap;
-    
-    mapping(address =>uint256[]) private _ownerTokenListMap;
+
+    mapping(address => uint256[]) private _ownerTokenListMap;
     mapping(uint256 => Ship) private _tokenIdShipMap;
     mapping(uint256 => Hero) private _tokenIdHeroMap;
-   
-    mapping(address=>UserInfo) private _userInfoMap;
 
-    struct UserInfo{
+    mapping(address => UserInfo) private _userInfoMap;
+
+    struct UserInfo {
         string nickname;
         Fleet[] fleets;
         bytes[] battleHistory;
     }
 
-     struct Ship {
+    struct Ship {
         uint16 attack;
         uint16 defense;
         uint16 agility;
@@ -63,7 +63,7 @@ contract TestLightYear is ERC721 {
         // uint16 quality;
     }
 
-    struct Hero{
+    struct Hero {
         uint16 attack;
         uint16 defense;
         uint16 agility;
@@ -71,17 +71,17 @@ contract TestLightYear is ERC721 {
         uint16 health;
     }
 
-    struct Fleet{
+    struct Fleet {
         uint256[] shipIdArray;
         uint256[] heroIdArray;
     }
 
-    struct BattleInfo{
+    struct BattleInfo {
         bytes1 direction;
         uint8 battleType;
         uint8 fromIndex;
         uint8 toIndex;
-        
+
         uint8 attributeIndex;
         uint32 delta;
     }
@@ -90,29 +90,29 @@ contract TestLightYear is ERC721 {
      * 
      */
     function lightYear_viewBattle(address defenderAddress) public view returns (bytes memory){
-        
+
         //user info
-        UserInfo memory attackerUser=_userInfoMap[msg.sender];
-        UserInfo memory defenderUser=_userInfoMap[defenderAddress];
-        
+        UserInfo memory attackerUser = _userInfoMap[msg.sender];
+        UserInfo memory defenderUser = _userInfoMap[defenderAddress];
+
         //fleet list
-        Fleet[] memory attackerFleets=attackerUser.fleets;
-        Fleet[] memory defenderFleets=defenderUser.fleets;
-        
+        Fleet[] memory attackerFleets = attackerUser.fleets;
+        Fleet[] memory defenderFleets = defenderUser.fleets;
+
         //check length
-        require(attackerFleets.length>0,"Attacker has no fleet.");
-        require(defenderFleets.length>0,"Defender has no fleet.");
+        require(attackerFleets.length > 0, "Attacker has no fleet.");
+        require(defenderFleets.length > 0, "Defender has no fleet.");
 
         //fleet index
-        uint256 attackerFleetsIndex=0;
-        uint256 defenderFleetsIndex=0;
-        
+        uint256 attackerFleetsIndex = 0;
+        uint256 defenderFleetsIndex = 0;
+
         //fleet
-        Fleet memory attackerFleet=attackerFleets[attackerFleetsIndex];
-        Fleet memory defenderFleet=defenderFleets[defenderFleetsIndex];
+        Fleet memory attackerFleet = attackerFleets[attackerFleetsIndex];
+        Fleet memory defenderFleet = defenderFleets[defenderFleetsIndex];
 
         //battle
-        bytes memory battleBytes=_battle(attackerFleet,defenderFleet);
+        bytes memory battleBytes = _battle(attackerFleet, defenderFleet);
 
         //return result of battle
         return battleBytes;
@@ -121,115 +121,115 @@ contract TestLightYear is ERC721 {
     /**
      * 
      */
-    function _battle(Fleet memory attacker,Fleet memory defender) private view returns(bytes memory){
+    function _battle(Fleet memory attacker, Fleet memory defender) private view returns (bytes memory){
         //ship length
-        uint256 attackerLen=attacker.shipIdArray.length;
-        uint256 defenderLen=defender.shipIdArray.length;
-        
+        uint256 attackerLen = attacker.shipIdArray.length;
+        uint256 defenderLen = defender.shipIdArray.length;
+
         //check length
-        require(attackerLen>0,"Attacker has no ship.");
-        require(defenderLen>0,"Defender has no ship.");
-        
+        require(attackerLen > 0, "Attacker has no ship.");
+        require(defenderLen > 0, "Defender has no ship.");
+
         //bytes
-        bytes memory result="";
-        
+        bytes memory result = "";
+
         //attack health
-        for(uint i=0;i<FLEET_SHIP_LIMIT;i++){
-            if(i<attackerLen){
-               Ship memory ship=_tokenIdShipMap[attacker.shipIdArray[i]];
-               result=_addBytes(result,ship.health); 
-            }else{
-                result=_addBytes(result,0);
+        for (uint i = 0; i < FLEET_SHIP_LIMIT; i++) {
+            if (i < attackerLen) {
+                Ship memory ship = _tokenIdShipMap[attacker.shipIdArray[i]];
+                result = _addBytes(result, ship.health);
+            } else {
+                result = _addBytes(result, 0);
             }
         }
-        
+
         //defender health
-        for(uint i=0;i<FLEET_SHIP_LIMIT;i++){
-            if(i<defenderLen){
-               Ship memory ship=_tokenIdShipMap[defender.shipIdArray[i]];
-               result=_addBytes(result,ship.health); 
-            }else{
-                result=_addBytes(result,0);
+        for (uint i = 0; i < FLEET_SHIP_LIMIT; i++) {
+            if (i < defenderLen) {
+                Ship memory ship = _tokenIdShipMap[defender.shipIdArray[i]];
+                result = _addBytes(result, ship.health);
+            } else {
+                result = _addBytes(result, 0);
             }
         }
-        
-        uint256 round=4;
-        
+
+        uint256 round = 4;
+
         //battle info
-        bytes[] memory battleInfoBytes=new bytes[](round);
-        
+        bytes[] memory battleInfoBytes = new bytes[](round);
+
         //battle
-        for(uint i=0;i<round;i++){
-            bytes memory roundBytes="";
-            if (i%2==0) {
+        for (uint i = 0; i < round; i++) {
+            bytes memory roundBytes = "";
+            if (i % 2 == 0) {
                 //attacker round
-                roundBytes=_singleRound(0,attacker,defender);
-            }else{
+                roundBytes = _singleRound(0, attacker, defender);
+            } else {
                 //defender round
-                roundBytes=_singleRound(1,defender,attacker);
+                roundBytes = _singleRound(1, defender, attacker);
             }
-            
-            battleInfoBytes[i]=roundBytes;
+
+            battleInfoBytes[i] = roundBytes;
         }
-        
-        for(uint i=0;i<battleInfoBytes.length;i++){
-            bytes memory b=battleInfoBytes[i];
-            result=_mergeBytes(result,b);
+
+        for (uint i = 0; i < battleInfoBytes.length; i++) {
+            bytes memory b = battleInfoBytes[i];
+            result = _mergeBytes(result, b);
         }
-        
+
         // bytes32 hash=keccak256(abi.encodePacked(result));
         // result=abi.encodePacked(hash);
-        
+
         return result;
     }
 
-    function _singleRound(uint8 battleType,Fleet memory attacker,Fleet memory defender) private view returns(bytes memory){
+    function _singleRound(uint8 battleType, Fleet memory attacker, Fleet memory defender) private view returns (bytes memory){
         //ships
-        uint256[] memory attackerShips=attacker.shipIdArray;
-        uint256[] memory defenderShips=defender.shipIdArray;
-        
-        uint8 fromIndex=uint8(_random(attackerShips.length));
-        uint8 toIndex =uint8(_random(defenderShips.length));
-        uint8 attributeIndex=6;
-        
-        Ship memory attackerShip=_tokenIdShipMap[attackerShips[fromIndex]];
-        Ship memory defenderShip=_tokenIdShipMap[defenderShips[toIndex]];
-        
-        uint16 delta=_causeDamage(attackerShip,defenderShip);
-        defenderShip.health-=delta;
-        
-        BattleInfo memory info=BattleInfo(0x00,battleType,fromIndex,toIndex,attributeIndex,defenderShip.health);
+        uint256[] memory attackerShips = attacker.shipIdArray;
+        uint256[] memory defenderShips = defender.shipIdArray;
+
+        uint8 fromIndex = uint8(_random(attackerShips.length));
+        uint8 toIndex = uint8(_random(defenderShips.length));
+        uint8 attributeIndex = 6;
+
+        Ship memory attackerShip = _tokenIdShipMap[attackerShips[fromIndex]];
+        Ship memory defenderShip = _tokenIdShipMap[defenderShips[toIndex]];
+
+        uint16 delta = _causeDamage(attackerShip, defenderShip);
+        defenderShip.health -= delta;
+
+        BattleInfo memory info = BattleInfo(0x00, battleType, fromIndex, toIndex, attributeIndex, defenderShip.health);
         return _battleInfoToBytes(info);
     }
 
     /**
      * 
      */
-    function _causeDamage(Ship memory a,Ship memory b) private pure returns (uint16){
+    function _causeDamage(Ship memory a, Ship memory b) private pure returns (uint16){
         return a.attack;
     }
 
     /**
      * 
      */
-    function _battleInfoToBytes(BattleInfo memory info) private pure returns(bytes memory){
-        bytes1 direction=_toDirection(info.battleType,info.fromIndex,info.toIndex);
-        bytes memory b="";
-        b=_mergeBytes(b,abi.encodePacked(direction));
-        b=_mergeBytes(b,abi.encodePacked(info.attributeIndex));
-        b=_mergeBytes(b,abi.encodePacked(info.delta));
+    function _battleInfoToBytes(BattleInfo memory info) private pure returns (bytes memory){
+        bytes1 direction = _toDirection(info.battleType, info.fromIndex, info.toIndex);
+        bytes memory b = "";
+        b = _mergeBytes(b, abi.encodePacked(direction));
+        b = _mergeBytes(b, abi.encodePacked(info.attributeIndex));
+        b = _mergeBytes(b, abi.encodePacked(info.delta));
         return b;
     }
 
     /**
      * 
      */
-    function _toDirection(uint8 a,uint8 b, uint8 c) private pure returns(bytes1){
-        require(a<=3 && b<=7 && c<=7);
-        bytes1 a_byte=abi.encodePacked(a)[0]<<6;
-        bytes1 b_byte=abi.encodePacked(b)[0]<<3;
-        bytes1 c_byte=abi.encodePacked(c)[0];
-        bytes1 result=a_byte|b_byte|c_byte;
+    function _toDirection(uint8 a, uint8 b, uint8 c) private pure returns (bytes1){
+        require(a <= 3 && b <= 7 && c <= 7);
+        bytes1 a_byte = abi.encodePacked(a)[0] << 6;
+        bytes1 b_byte = abi.encodePacked(b)[0] << 3;
+        bytes1 c_byte = abi.encodePacked(c)[0];
+        bytes1 result = a_byte | b_byte | c_byte;
         return result;
     }
 
@@ -248,13 +248,13 @@ contract TestLightYear is ERC721 {
     //     return random;
     // }
 
-    function _random(uint256 randomSize) private view returns(uint256){
-        uint256 difficulty=block.difficulty;
-        uint256 gaslimit=block.gaslimit;
-        uint256 number=block.number;
-        uint256 timestamp=block.timestamp;
-        uint256 gasprice=tx.gasprice;
-        uint256 random = uint256(keccak256(abi.encodePacked(difficulty,gaslimit,number,timestamp,gasprice))) % randomSize;
+    function _random(uint256 randomSize) private view returns (uint256){
+        uint256 difficulty = block.difficulty;
+        uint256 gaslimit = block.gaslimit;
+        uint256 number = block.number;
+        uint256 timestamp = block.timestamp;
+        uint256 gasprice = tx.gasprice;
+        uint256 random = uint256(keccak256(abi.encodePacked(difficulty, gaslimit, number, timestamp, gasprice))) % randomSize;
         return random;
     }
 
@@ -262,112 +262,112 @@ contract TestLightYear is ERC721 {
      * 
      */
     function lightYear_mintShip() public {
-       uint256 _tokenId= _mint();
-        
-       Ship memory ship= _createShip();
-        _tokenIdShipMap[_tokenId]=ship;
-        
-       UserInfo storage user= _userInfoMap[msg.sender];
-       if (user.fleets.length==0){
-           _createUser();
-       }
-       
-       Fleet storage lastFleet=user.fleets[user.fleets.length-1];
-       if(lastFleet.shipIdArray.length<FLEET_SHIP_LIMIT){
-           lastFleet.shipIdArray.push(_tokenId);
-       }else{
-           _createFleet();
-           Fleet storage newFleet=user.fleets[user.fleets.length-1];
-           newFleet.shipIdArray.push(_tokenId);
-       }
+        uint256 _tokenId = _mint();
+
+        Ship memory ship = _createShip();
+        _tokenIdShipMap[_tokenId] = ship;
+
+        UserInfo storage user = _userInfoMap[msg.sender];
+        if (user.fleets.length == 0) {
+            _createUser();
+        }
+
+        Fleet storage lastFleet = user.fleets[user.fleets.length - 1];
+        if (lastFleet.shipIdArray.length < FLEET_SHIP_LIMIT) {
+            lastFleet.shipIdArray.push(_tokenId);
+        } else {
+            _createFleet();
+            Fleet storage newFleet = user.fleets[user.fleets.length - 1];
+            newFleet.shipIdArray.push(_tokenId);
+        }
     }
 
     /**
      * 
      */
     function lightYear_mintHero() public {
-       uint256 _tokenId= _mint();
-        
-       Hero memory hero= _createHero();
-        _tokenIdHeroMap[_tokenId]=hero;
-        
-       UserInfo storage user=  _userInfoMap[msg.sender];
-       if (user.fleets.length==0){
-           _createUser();
-       }
-       
-       Fleet storage lastFleet=user.fleets[user.fleets.length-1];
-       if(lastFleet.heroIdArray.length<FLEET_HERO_LIMIT){
-           lastFleet.heroIdArray.push(_tokenId);
-       }else{
-           _createFleet();
-           Fleet storage newFleet=user.fleets[user.fleets.length-1];
-         newFleet.heroIdArray.push(_tokenId);
-       }
+        uint256 _tokenId = _mint();
+
+        Hero memory hero = _createHero();
+        _tokenIdHeroMap[_tokenId] = hero;
+
+        UserInfo storage user = _userInfoMap[msg.sender];
+        if (user.fleets.length == 0) {
+            _createUser();
+        }
+
+        Fleet storage lastFleet = user.fleets[user.fleets.length - 1];
+        if (lastFleet.heroIdArray.length < FLEET_HERO_LIMIT) {
+            lastFleet.heroIdArray.push(_tokenId);
+        } else {
+            _createFleet();
+            Fleet storage newFleet = user.fleets[user.fleets.length - 1];
+            newFleet.heroIdArray.push(_tokenId);
+        }
     }
 
     /**
      * 
      */
-    function lightYear_ownerTokenList() public view  returns(uint256[] memory){
+    function lightYear_ownerTokenList() public view returns (uint256[] memory){
         return _ownerTokenListMap[msg.sender];
     }
 
     /**
      * 
      */
-    function lightYear_userFleetsSize() public view returns(uint256 ){
-        UserInfo storage user =_userInfoMap[msg.sender];
+    function lightYear_userFleetsSize() public view returns (uint256){
+        UserInfo storage user = _userInfoMap[msg.sender];
         return user.fleets.length;
     }
 
     /**
      * 
      */
-    function lightYear_userFleets(uint256 i) public view returns(uint256[] memory,uint256[] memory){
-        UserInfo storage user =_userInfoMap[msg.sender];
-        uint256[] memory shipArr=user.fleets[i].shipIdArray;
-        uint256[] memory heroArr=user.fleets[i].heroIdArray;
-        return (shipArr,heroArr);
+    function lightYear_userFleets(uint256 i) public view returns (uint256[] memory, uint256[] memory){
+        UserInfo storage user = _userInfoMap[msg.sender];
+        uint256[] memory shipArr = user.fleets[i].shipIdArray;
+        uint256[] memory heroArr = user.fleets[i].heroIdArray;
+        return (shipArr, heroArr);
     }
 
     /**
      * 
      */
-    function _createShip() private pure returns(Ship memory){
-            Ship memory ship=Ship(100, 100, 100, 100, 500);
-              return ship;
-        }
-      
-    /**
-     * 
-     */  
-    function _createHero() private pure returns(Hero memory){
-        Hero memory hero=Hero(100, 100, 100, 100, 500);
-          return hero;
+    function _createShip() private pure returns (Ship memory){
+        Ship memory ship = Ship(100, 100, 100, 100, 500);
+        return ship;
     }
 
     /**
      * 
      */
-    function _createFleet() private returns(Fleet memory){
-        UserInfo storage user =_userInfoMap[msg.sender];
-          uint256[] memory shipIdArray=new uint256[](0);
-          uint256[] memory heroIdArray=new uint256[](0);
-          Fleet memory newFleet=Fleet(shipIdArray,heroIdArray);
-user.fleets.push(newFleet);
-          return newFleet;
+    function _createHero() private pure returns (Hero memory){
+        Hero memory hero = Hero(100, 100, 100, 100, 500);
+        return hero;
     }
 
     /**
      * 
      */
-    function _createUser() private{
-        UserInfo storage user=  _userInfoMap[msg.sender];
-        user.nickname="";
+    function _createFleet() private returns (Fleet memory){
+        UserInfo storage user = _userInfoMap[msg.sender];
+        uint256[] memory shipIdArray = new uint256[](0);
+        uint256[] memory heroIdArray = new uint256[](0);
+        Fleet memory newFleet = Fleet(shipIdArray, heroIdArray);
+        user.fleets.push(newFleet);
+        return newFleet;
+    }
+
+    /**
+     * 
+     */
+    function _createUser() private {
+        UserInfo storage user = _userInfoMap[msg.sender];
+        user.nickname = "";
         _createFleet();
     }
-    
+
     /**
      * 
      */
@@ -389,26 +389,26 @@ user.fleets.push(newFleet);
      * 
      */
     function _mergeBytes(bytes memory a, bytes memory b) private pure returns (bytes memory c) {
-        return abi.encodePacked(a,b);    
+        return abi.encodePacked(a, b);
     }
 
     /**
      * 
      */
-    function _mint()private returns (uint256){
-        
+    function _mint() private returns (uint256){
+
         //owner token changes
         uint256 _tokenId = totalSupply + 1;
         _ownerTokenAmountMap[msg.sender] += 1;
         _tokenIdOwnerMap[_tokenId] = msg.sender;
         _ownerTokenListMap[msg.sender].push(_tokenId);
-        
+
         //emit Transfer
         emit Transfer(address(0), msg.sender, _tokenId);
         totalSupply += 1;
-        
+
         return _tokenId;
-    }    
+    }
 
     function _transfer() private {
 
