@@ -77,7 +77,11 @@ contract TestLightYear is ERC721 {
     }
 
     struct BattleInfo{
-        uint8 direction;
+        bytes1 direction;
+        uint8 battleType;
+        uint8 fromIndex;
+        uint8 toIndex;
+        
         uint8 attributeIndex;
         uint32 delta;
     }
@@ -96,48 +100,109 @@ contract TestLightYear is ERC721 {
         Fleet[] memory defenderFleets=defenderUser.fleets;
         
         //check length
-        require(attackerFleets.length>0&&defenderFleets.length>0);
-        require(attackerFleets[0].shipIdArray.length>0&&defenderFleets[0].shipIdArray.length>0);
+        require(attackerFleets.length>0,"Attacker has no fleet.");
+        require(defenderFleets.length>0,"Defender has no fleet.");
+
+        //fleet index
+        uint256 attackerFleetsIndex=0;
+        uint256 defenderFleetsIndex=0;
         
-        //get ship
-        Ship memory attacker = _tokenIdShipMap[attackerFleets[0].shipIdArray[0]];
-        Ship memory defender = _tokenIdShipMap[defenderFleets[0].shipIdArray[0]];
+        //fleet
+        Fleet memory attackerFleet=attackerFleets[attackerFleetsIndex];
+        Fleet memory defenderFleet=defenderFleets[defenderFleetsIndex];
 
-        //result of battle
-        bytes memory battleBytes = "";
-
-        //count of round
-        uint256 count = 0;
-        
-        //start battle
-        while (true) {
-            
-            //limit count
-            count++;
-            if (count > 20) {
-                break;
-            }
-
-            //attack round
-            uint16 damage = _attack(attacker, defender);
-            defender.health = _causeDamage(defender.health, damage);
-            battleBytes = _addBytes(battleBytes, defender.health);
-            if (defender.health <= 0) {
-                break;
-            }
-
-            //defense round
-            damage = _attack(defender, attacker);
-            attacker.health = _causeDamage(attacker.health, damage);
-            battleBytes = _addBytes(battleBytes, attacker.health);
-            if (attacker.health <= 0) {
-                break;
-            }
-
-        }
+        //battle
+        bytes memory battleBytes=_battle(attackerFleet,defenderFleet);
 
         //return result of battle
         return battleBytes;
+    }
+
+    function _battle(Fleet memory attacker,Fleet memory defender) private view returns(bytes memory){
+        //ship length
+        uint256 attackerLen=attacker.shipIdArray.length;
+        uint256 defenderLen=defender.shipIdArray.length;
+        
+        //check length
+        require(attackerLen>0,"Attacker has no ship.");
+        require(defenderLen>0,"Defender has no ship.");
+        
+        //bytes
+        bytes memory result="";
+        
+        //attack health
+        for(uint i=0;i<FLEET_SHIP_LIMIT;i++){
+            if(i<attackerLen){
+               Ship memory ship=_tokenIdShipMap[attacker.shipIdArray[i]];
+               result=_addBytes(result,ship.health); 
+            }else{
+                result=_addBytes(result,0);
+            }
+        }
+        
+        //defender health
+        for(uint i=0;i<FLEET_SHIP_LIMIT;i++){
+            if(i<defenderLen){
+               Ship memory ship=_tokenIdShipMap[defender.shipIdArray[i]];
+               result=_addBytes(result,ship.health); 
+            }else{
+                result=_addBytes(result,0);
+            }
+        }
+        
+        //battle info
+        BattleInfo[] memory battleInfo=new BattleInfo[](20);
+        
+        //battle
+        for(uint i=0;i<2;i++){
+            
+            BattleInfo memory info=BattleInfo(0x00,0,0,0,0,1);
+            bytes memory b=_battleInfoToBytes(info);
+            result=_mergeBytes(result,b);
+        }
+        
+        bytes32 hash=keccak256(abi.encodePacked(result));
+        
+        result=abi.encodePacked(hash);
+        
+        //return result
+        return result;
+    }
+
+    function _battleInfoToBytes(BattleInfo memory info) private pure returns(bytes memory){
+        bytes1 direction=_toDirection(info.battleType,info.fromIndex,info.toIndex);
+        bytes memory b="";
+        b=_mergeBytes(b,abi.encodePacked(direction));
+        b=_mergeBytes(b,abi.encodePacked(info.attributeIndex));
+        b=_mergeBytes(b,abi.encodePacked(info.delta));
+        return b;
+    }
+
+    /**
+     * 
+     */
+    function _toDirection(uint8 a,uint8 b, uint8 c) private pure returns(bytes1){
+        require(a<=3 && b<=7 && c<=7);
+        bytes1 a_byte=abi.encodePacked(a)[0]<<6;
+        bytes1 b_byte=abi.encodePacked(b)[0]<<3;
+        bytes1 c_byte=abi.encodePacked(c)[0];
+        bytes1 result=a_byte|b_byte|c_byte;
+        return result;
+    }
+
+    /**
+     * get random number
+     */
+    uint256 nonce;
+    function _random(uint256 randomSize) private returns(uint256){
+        nonce++;
+        uint256 difficulty=block.difficulty;
+        uint256 gaslimit=block.gaslimit;
+        uint256 number=block.number;
+        uint256 timestamp=block.timestamp;
+        uint256 gasprice=tx.gasprice;
+        uint256 random = uint256(keccak256(abi.encodePacked(nonce,difficulty,gaslimit,number,timestamp,gasprice))) % randomSize;
+        return random;
     }
 
     /**
