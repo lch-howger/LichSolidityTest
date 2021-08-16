@@ -82,27 +82,6 @@ contract TestLightYear is ERC721 {
         uint32 delta;
     }
 
-      function test03_getBytes() public  {
-         for(uint i=0;i<100;i++){
-             test02_getBytes();
-         }
-      }
-
-    function test02_getBytes() public  {
-       UserInfo storage user= _userInfoMap[msg.sender];
-    //  BattleInfo[] storage battleHistory=  user.battleHistory;
-    //  BattleInfo memory info=BattleInfo(100);
-    //  battleHistory.push(info);
-    
-        bytes memory b="aaaaabbbbbccccc";
-        user.battleHistory.push(b);
-        
-    }
-
-    function test01_getBytes() public pure returns(bytes memory){
-        
-    }
-
     function lightYear_pureBattle() public pure returns (bytes memory){
         Ship memory attacker = Ship(100, 100, 100, 100, 500);
         Ship memory defender = Ship(100, 100, 100, 100, 500);
@@ -118,7 +97,7 @@ contract TestLightYear is ERC721 {
             
             //limit count
             count++;
-            if (count > 40) {
+            if (count > 20) {
                 break;
             }
 
