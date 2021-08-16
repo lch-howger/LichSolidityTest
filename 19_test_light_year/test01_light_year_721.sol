@@ -82,6 +82,9 @@ contract TestLightYear is ERC721 {
         uint32 delta;
     }
 
+    /**
+     * 
+     */
     function lightYear_pureBattle() public pure returns (bytes memory){
         Ship memory attacker = Ship(100, 100, 100, 100, 500);
         Ship memory defender = Ship(100, 100, 100, 100, 500);
@@ -123,6 +126,9 @@ contract TestLightYear is ERC721 {
         return battleBytes;
     }
 
+    /**
+     * 
+     */
     function lightYear_mintShip() public {
        uint256 _tokenId= _mint();
         
@@ -144,7 +150,10 @@ contract TestLightYear is ERC721 {
        }
     }
 
-     function lightYear_mintHero() public {
+    /**
+     * 
+     */
+    function lightYear_mintHero() public {
        uint256 _tokenId= _mint();
         
        Hero memory hero= _createHero();
@@ -165,32 +174,50 @@ contract TestLightYear is ERC721 {
        }
     }
 
+    /**
+     * 
+     */
     function lightYear_ownerTokenList() public view  returns(uint256[] memory){
         return _ownerTokenListMap[msg.sender];
     }
 
+    /**
+     * 
+     */
     function lightYear_userFleetsSize() public view returns(uint256 ){
         UserInfo storage user =_userInfoMap[msg.sender];
         return user.fleets.length;
     }
 
- function lightYear_userFleets(uint256 i) public view returns(uint256[] memory,uint256[] memory){
+    /**
+     * 
+     */
+    function lightYear_userFleets(uint256 i) public view returns(uint256[] memory,uint256[] memory){
         UserInfo storage user =_userInfoMap[msg.sender];
         uint256[] memory shipArr=user.fleets[i].shipIdArray;
         uint256[] memory heroArr=user.fleets[i].heroIdArray;
         return (shipArr,heroArr);
     }
 
+    /**
+     * 
+     */
     function _createShip() private pure returns(Ship memory){
             Ship memory ship=Ship(100, 100, 100, 100, 500);
               return ship;
         }
-        
+      
+    /**
+     * 
+     */  
     function _createHero() private pure returns(Hero memory){
         Hero memory hero=Hero(100, 100, 100, 100, 500);
           return hero;
     }
 
+    /**
+     * 
+     */
     function _createFleet() private returns(Fleet memory){
         UserInfo storage user =_userInfoMap[msg.sender];
           uint256[] memory shipIdArray=new uint256[](0);
@@ -200,6 +227,9 @@ user.fleets.push(newFleet);
           return newFleet;
     }
 
+    /**
+     * 
+     */
     function _createUser() private{
         UserInfo storage user=  _userInfoMap[msg.sender];
         user.nickname="";
@@ -209,12 +239,17 @@ user.fleets.push(newFleet);
     function _userAddShip() private{
         
     }
-
+    
+    /**
+     * 
+     */
     function _addBytes(bytes memory b, uint16 i) private pure returns (bytes memory){
         return _mergeBytes(b, abi.encodePacked(i));
     }
 
-
+    /**
+     * 
+     */
     function _attack(Ship memory attacker, Ship memory defender) private pure returns (uint16){
         uint16 damage = attacker.attack + attacker.attack * attacker.accuracy / (attacker.attack + attacker.accuracy);
         uint16 resist = defender.defense + defender.defense * defender.agility / (defender.defense + defender.agility);
@@ -223,6 +258,9 @@ user.fleets.push(newFleet);
 
     }
 
+    /**
+     * 
+     */
     function _causeDamage(uint16 health, uint16 damage) private pure returns (uint16){
         if (health <= damage) {
             return 0;
@@ -231,6 +269,9 @@ user.fleets.push(newFleet);
         }
     }
 
+    /**
+     * 
+     */
     function _mergeBytes(bytes memory a, bytes memory b) private pure returns (bytes memory c) {
         uint alen = a.length;
         uint totallen = alen + b.length;
@@ -246,12 +287,18 @@ user.fleets.push(newFleet);
         }
     }
 
+    /**
+     * 
+     */
     function _mint()private returns (uint256){
+        
+        //owner token changes
         uint256 _tokenId = totalSupply + 1;
         _ownerTokenAmountMap[msg.sender] += 1;
         _tokenIdOwnerMap[_tokenId] = msg.sender;
         _ownerTokenListMap[msg.sender].push(_tokenId);
         
+        //emit Transfer
         emit Transfer(address(0), msg.sender, _tokenId);
         totalSupply += 1;
         
