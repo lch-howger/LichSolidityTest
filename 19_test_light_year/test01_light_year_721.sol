@@ -250,10 +250,10 @@ user.fleets.push(newFleet);
         uint256 _tokenId = totalSupply + 1;
         _ownerTokenAmountMap[msg.sender] += 1;
         _tokenIdOwnerMap[_tokenId] = msg.sender;
-        emit Transfer(address(0), msg.sender, _tokenId);
-        
-        totalSupply += 1;
         _ownerTokenListMap[msg.sender].push(_tokenId);
+        
+        emit Transfer(address(0), msg.sender, _tokenId);
+        totalSupply += 1;
         
         return _tokenId;
     }    
