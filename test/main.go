@@ -41,12 +41,14 @@ func test03(rawHex string) {
 	fmt.Println(rawHex)
 	tempString := ""
 	split := strings.Split(rawHex, "")
+	count := 0
 	for k, v := range split {
 		tempString += v
 		if k > 0 && (k-3)%4 == 0 {
 			i := new(big.Int)
 			i.SetString(tempString, 16)
-			fmt.Printf("%v,", i)
+			count++
+			fmt.Printf("第%v回合,血量剩余%v,\n", count, i)
 			tempString = ""
 		}
 	}
