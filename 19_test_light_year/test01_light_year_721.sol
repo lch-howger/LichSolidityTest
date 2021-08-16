@@ -85,9 +85,18 @@ contract TestLightYear is ERC721 {
     /**
      * 
      */
-    function lightYear_pureBattle() public pure returns (bytes memory){
-        Ship memory attacker = Ship(100, 100, 100, 100, 500);
-        Ship memory defender = Ship(100, 100, 100, 100, 500);
+    function lightYear_viewBattle(address defenderAddress) public view returns (bytes memory){
+        UserInfo memory attackerUser=_userInfoMap[msg.sender];
+        UserInfo memory defenderUser=_userInfoMap[defenderAddress];
+        
+        Fleet[] memory attackerFleets=attackerUser.fleets;
+        Fleet[] memory defenderFleets=defenderUser.fleets;
+        
+        require(attackerFleets.length>0&&defenderFleets.length>0);
+        require(attackerFleets[0].shipIdArray.length>0&&defenderFleets[0].shipIdArray.length>0);
+        
+        Ship memory attacker = _tokenIdShipMap[attackerFleets[0].shipIdArray[0]];
+        Ship memory defender = _tokenIdShipMap[defenderFleets[0].shipIdArray[0]];
 
         //result of battle
         bytes memory battleBytes = "";
