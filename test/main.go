@@ -31,7 +31,45 @@ type Hero struct {
 }
 
 func main() {
-	test03("0x01a901a9015e015e0113011300c800c8007d007d003200320000")
+	test04("0x01f4000000000000000001f4000000000000000000060000ffff40060000ffff")
+}
+
+func test04(rawHex string) {
+	rawHex = noPrefix(rawHex)
+	attackerHealth := rawHex[0:20]
+	defenderHealth := rawHex[20:40]
+	fmt.Printf("攻击者初始血量为:%v \n", attackerHealth)
+	fmt.Printf("防御者初始血量为:%v \n", defenderHealth)
+
+	arr := splitString(rawHex[40:], 12)
+	for k, v := range arr {
+		fmt.Printf("第%v回合, 数据为: %v \n", k+1, v)
+	}
+}
+
+func splitString(str string, length int) []string {
+	if len(str)%length == 0 {
+		arr := []string{}
+		tempString := ""
+		split := strings.Split(str, "")
+		for k, v := range split {
+			tempString += v
+			if k > 0 && (k+1)%length == 0 {
+				arr = append(arr, tempString)
+				tempString = ""
+			}
+		}
+		return arr
+	} else {
+		return nil
+	}
+}
+
+func noPrefix(rawHex string) string {
+	if strings.HasPrefix(rawHex, "0x") {
+		rawHex = rawHex[2:]
+	}
+	return rawHex
 }
 
 func test03(rawHex string) {
