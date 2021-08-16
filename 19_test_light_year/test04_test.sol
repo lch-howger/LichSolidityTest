@@ -21,15 +21,15 @@ contract Storage {
         return random;
     }
     
-    uint256 count;
+    uint256 nonce;
     function _random(uint256 randomSize) private returns(uint256){
-        count++;
+        nonce++;
         uint256 difficulty=block.difficulty;
         uint256 gaslimit=block.gaslimit;
         uint256 number=block.number;
         uint256 timestamp=block.timestamp;
         uint256 gasprice=tx.gasprice;
-        uint256 random = uint256(keccak256(abi.encodePacked(count,difficulty,gaslimit,number,timestamp,gasprice))) % randomSize;
+        uint256 random = uint256(keccak256(abi.encodePacked(nonce,difficulty,gaslimit,number,timestamp,gasprice))) % randomSize;
         return random;
     }
 }
