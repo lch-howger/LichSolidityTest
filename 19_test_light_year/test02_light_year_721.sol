@@ -161,11 +161,9 @@ contract TestLightYear is ERC721 {
             result=_mergeBytes(result,b);
         }
         
-        bytes32 hash=keccak256(abi.encodePacked(result));
+        // bytes32 hash=keccak256(abi.encodePacked(result));
+        // result=abi.encodePacked(hash);
         
-        result=abi.encodePacked(hash);
-        
-        //return result
         return result;
     }
 
