@@ -249,10 +249,6 @@ user.fleets.push(newFleet);
         user.nickname="";
         _createFleet();
     }
-
-    function _userAddShip() private{
-        
-    }
     
     /**
      * 
