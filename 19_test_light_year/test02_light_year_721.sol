@@ -118,6 +118,9 @@ contract TestLightYear is ERC721 {
         return battleBytes;
     }
 
+    /**
+     * 
+     */
     function _battle(Fleet memory attacker,Fleet memory defender) private view returns(bytes memory){
         //ship length
         uint256 attackerLen=attacker.shipIdArray.length;
@@ -150,41 +153,27 @@ contract TestLightYear is ERC721 {
             }
         }
         
-        uint256 round=2;
+        uint256 round=4;
         
         //battle info
-        BattleInfo[] memory battleInfo=new BattleInfo[](round);
+        bytes[] memory battleInfoBytes=new bytes[](round);
         
         //battle
         for(uint i=0;i<round;i++){
-            
-            if(i%2==0){
+            bytes memory roundBytes="";
+            if (i%2==0) {
                 //attacker round
-                uint8 battleType=0;
-                uint8 fromIndex=uint8(_random(attackerLen));
-                uint8 toIndex =uint8(_random(defenderLen));
-                uint8 attributeIndex=6;
-                uint32 delta=65535;
-                
-                BattleInfo memory info=BattleInfo(0x00,battleType,fromIndex,toIndex,attributeIndex,delta);
-                battleInfo[i]=info;
+                roundBytes=_singleRound(0,attacker,defender);
             }else{
                 //defender round
-                uint8 battleType=1;
-                uint8 fromIndex=uint8(_random(defenderLen));
-                uint8 toIndex =uint8(_random(attackerLen));
-                uint8 attributeIndex=6;
-                uint32 delta=65535;
-                
-                BattleInfo memory info=BattleInfo(0x00,battleType,fromIndex,toIndex,attributeIndex,delta);
-                battleInfo[i]=info;
+                roundBytes=_singleRound(1,defender,attacker);
             }
             
-            
+            battleInfoBytes[i]=roundBytes;
         }
         
-        for(uint i=0;i<battleInfo.length;i++){
-            bytes memory b=_battleInfoToBytes(battleInfo[i]);
+        for(uint i=0;i<battleInfoBytes.length;i++){
+            bytes memory b=battleInfoBytes[i];
             result=_mergeBytes(result,b);
         }
         
@@ -194,6 +183,35 @@ contract TestLightYear is ERC721 {
         return result;
     }
 
+    function _singleRound(uint8 battleType,Fleet memory attacker,Fleet memory defender) private view returns(bytes memory){
+        //ships
+        uint256[] memory attackerShips=attacker.shipIdArray;
+        uint256[] memory defenderShips=defender.shipIdArray;
+        
+        uint8 fromIndex=uint8(_random(attackerShips.length));
+        uint8 toIndex =uint8(_random(defenderShips.length));
+        uint8 attributeIndex=6;
+        
+        Ship memory attackerShip=_tokenIdShipMap[attackerShips[fromIndex]];
+        Ship memory defenderShip=_tokenIdShipMap[defenderShips[toIndex]];
+        
+        uint16 delta=_causeDamage(attackerShip,defenderShip);
+        defenderShip.health-=delta;
+        
+        BattleInfo memory info=BattleInfo(0x00,battleType,fromIndex,toIndex,attributeIndex,defenderShip.health);
+        return _battleInfoToBytes(info);
+    }
+
+    /**
+     * 
+     */
+    function _causeDamage(Ship memory a,Ship memory b) private pure returns (uint16){
+        return a.attack;
+    }
+
+    /**
+     * 
+     */
     function _battleInfoToBytes(BattleInfo memory info) private pure returns(bytes memory){
         bytes1 direction=_toDirection(info.battleType,info.fromIndex,info.toIndex);
         bytes memory b="";
@@ -249,7 +267,7 @@ contract TestLightYear is ERC721 {
        Ship memory ship= _createShip();
         _tokenIdShipMap[_tokenId]=ship;
         
-       UserInfo storage user=  _userInfoMap[msg.sender];
+       UserInfo storage user= _userInfoMap[msg.sender];
        if (user.fleets.length==0){
            _createUser();
        }
@@ -260,7 +278,7 @@ contract TestLightYear is ERC721 {
        }else{
            _createFleet();
            Fleet storage newFleet=user.fleets[user.fleets.length-1];
-         newFleet.shipIdArray.push(_tokenId);
+           newFleet.shipIdArray.push(_tokenId);
        }
     }
 
@@ -365,18 +383,6 @@ user.fleets.push(newFleet);
         uint16 resist = defender.defense + defender.defense * defender.agility / (defender.defense + defender.agility);
         uint16 realDamage = damage * damage / (damage + resist);
         return realDamage;
-
-    }
-
-    /**
-     * 
-     */
-    function _causeDamage(uint16 health, uint16 damage) private pure returns (uint16){
-        if (health <= damage) {
-            return 0;
-        } else {
-            return health - damage;
-        }
     }
 
     /**
