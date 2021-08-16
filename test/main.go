@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/big"
+	"strconv"
+	"strings"
+)
 
 /**
 1.攻击
@@ -26,7 +31,47 @@ type Hero struct {
 }
 
 func main() {
-	test01()
+	test03("0x01a901a9015e015e0113011300c800c8007d007d003200320000")
+}
+
+func test03(rawHex string) {
+	if strings.HasPrefix(rawHex, "0x") {
+		rawHex = rawHex[2:]
+	}
+	fmt.Println(rawHex)
+	tempString := ""
+	split := strings.Split(rawHex, "")
+	for k, v := range split {
+		tempString += v
+		if k > 0 && (k-3)%4 == 0 {
+			i := new(big.Int)
+			i.SetString(tempString, 16)
+			fmt.Printf("%v,", i)
+			tempString = ""
+		}
+	}
+}
+
+func test02(rawHex string) {
+	if strings.HasPrefix(rawHex, "0x") {
+		rawHex = rawHex[2:]
+	}
+	fmt.Println(rawHex)
+	i, err := strconv.ParseUint(rawHex, 16, 32)
+	if err != nil {
+		fmt.Printf("%s", err)
+	}
+	fmt.Printf("%024b\n", i)
+	fmt.Println(asBits(i))
+}
+
+func asBits(val uint64) []uint64 {
+	bits := []uint64{}
+	for i := 0; i < 24; i++ {
+		bits = append([]uint64{val & 0x1}, bits...)
+		val = val >> 1
+	}
+	return bits
 }
 
 func test01() {
