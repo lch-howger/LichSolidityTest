@@ -141,13 +141,25 @@ contract TestLightYear is ERC721 {
         require(attackerLen > 0, "Attacker has no ship.");
         require(defenderLen > 0, "Defender has no ship.");
 
+        //attacker ships
+        Ship[] memory attackerShips=new Ship[](attackerLen);
+        for(uint i=0;i<attackerLen;i++){
+            attackerShips[i]=_tokenIdShipMap[attacker.shipIdArray[i]];
+        }
+        
+        //defender ships
+        Ship[] memory defenderShips=new Ship[](defenderLen);
+        for(uint i=0;i<defenderLen;i++){
+            defenderShips[i]=_tokenIdShipMap[defender.shipIdArray[i]];
+        }
+
         //bytes
         bytes memory result = "";
 
         //attack health
         for (uint i = 0; i < FLEET_SHIP_LIMIT; i++) {
             if (i < attackerLen) {
-                Ship memory ship = _tokenIdShipMap[attacker.shipIdArray[i]];
+                Ship memory ship = attackerShips[i];
                 result = _addBytes(result, ship.health);
             } else {
                 result = _addBytes(result, 0);
@@ -157,7 +169,7 @@ contract TestLightYear is ERC721 {
         //defender health
         for (uint i = 0; i < FLEET_SHIP_LIMIT; i++) {
             if (i < defenderLen) {
-                Ship memory ship = _tokenIdShipMap[defender.shipIdArray[i]];
+                Ship memory ship = defenderShips[i];
                 result = _addBytes(result, ship.health);
             } else {
                 result = _addBytes(result, 0);
@@ -175,10 +187,10 @@ contract TestLightYear is ERC721 {
             bytes memory roundBytes = "";
             if (i % 2 == 0) {
                 //attacker round
-                roundBytes = _singleRound(0, attacker, defender);
+                (roundBytes) = _singleRound(0, attackerShips, defenderShips);
             } else {
                 //defender round
-                roundBytes = _singleRound(1, defender, attacker);
+                (roundBytes) = _singleRound(1, defenderShips, attackerShips);
             }
 
             //append bytes array
@@ -194,22 +206,18 @@ contract TestLightYear is ERC721 {
         return result;
     }
 
-    function _singleRound(uint8 battleType, Fleet memory attacker, Fleet memory defender) private view returns (bytes memory){
-
-        //ship array
-        uint256[] memory attackerShips = attacker.shipIdArray;
-        uint256[] memory defenderShips = defender.shipIdArray;
+    function _singleRound(uint8 battleType, Ship[] memory attacker, Ship[] memory defender) private view returns (bytes memory){
 
         //from index and to index
-        uint8 fromIndex = uint8(_random(attackerShips.length));
-        uint8 toIndex = uint8(_random(defenderShips.length));
+        uint8 fromIndex = uint8(_random(attacker.length));
+        uint8 toIndex = uint8(_random(defender.length));
 
         //attribute index
         uint8 attributeIndex = 6;
 
         //attacker ship and defender ship
-        Ship memory attackerShip = _tokenIdShipMap[attackerShips[fromIndex]];
-        Ship memory defenderShip = _tokenIdShipMap[defenderShips[toIndex]];
+        Ship memory attackerShip = attacker[fromIndex];
+        Ship memory defenderShip = defender[toIndex];
 
         //cause damage
         uint16 delta = _causeDamage(attackerShip, defenderShip);
@@ -226,7 +234,7 @@ contract TestLightYear is ERC721 {
      * 
      */
     function _causeDamage(Ship memory a, Ship memory b) private pure returns (uint16){
-        return a.attack;
+        return a.attack+b.attack-b.attack;
     }
 
     /**
