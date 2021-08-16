@@ -12,4 +12,9 @@ contract Storage {
         return result;
     }
     
+    function test01() public pure returns(uint256){
+        uint256 a=1;
+        uint256 b=2;
+        return a-b;
+    }
 }
