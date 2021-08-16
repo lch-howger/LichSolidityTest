@@ -31,20 +31,30 @@ interface ERC165 {
 
 contract TestLightYear is ERC721 {
 
-    uint8  constant FLEET_SHIP_LIMIT = 5;
+    uint8 constant FLEET_SHIP_LIMIT = 5;
     uint8 constant FLEET_HERO_LIMIT = 5;
     uint8 constant MAX_UINT8 = 255;
     uint16 constant MAX_UINT16 = 65535;
     uint32 constant MAX_UINT32 = 4294967295;
 
     uint256 totalSupply = 0;
-    mapping(address => uint256) private _ownerTokenAmountMap;
+
+    //token id owner
     mapping(uint256 => address) private _tokenIdOwnerMap;
 
+    //owner token amount
+    mapping(address => uint256) private _ownerTokenAmountMap;
+
+    //owner token list
     mapping(address => uint256[]) private _ownerTokenListMap;
+
+    //token id to ship
     mapping(uint256 => Ship) private _tokenIdShipMap;
+
+    //token id to hero
     mapping(uint256 => Hero) private _tokenIdHeroMap;
 
+    //address to user info
     mapping(address => UserInfo) private _userInfoMap;
 
     struct UserInfo {
@@ -87,7 +97,7 @@ contract TestLightYear is ERC721 {
     }
 
     /**
-     * 
+     * battle
      */
     function lightYear_viewBattle(address defenderAddress) public view returns (bytes memory){
 
@@ -119,9 +129,10 @@ contract TestLightYear is ERC721 {
     }
 
     /**
-     * 
+     * private battle
      */
     function _battle(Fleet memory attacker, Fleet memory defender) private view returns (bytes memory){
+
         //ship length
         uint256 attackerLen = attacker.shipIdArray.length;
         uint256 defenderLen = defender.shipIdArray.length;
@@ -153,12 +164,13 @@ contract TestLightYear is ERC721 {
             }
         }
 
+        //temp round
         uint256 round = 4;
 
-        //battle info
+        //battle info bytes array
         bytes[] memory battleInfoBytes = new bytes[](round);
 
-        //battle
+        //battle range
         for (uint i = 0; i < round; i++) {
             bytes memory roundBytes = "";
             if (i % 2 == 0) {
@@ -169,36 +181,44 @@ contract TestLightYear is ERC721 {
                 roundBytes = _singleRound(1, defender, attacker);
             }
 
+            //append bytes array
             battleInfoBytes[i] = roundBytes;
         }
 
+        //convert bytes array to bytes
         for (uint i = 0; i < battleInfoBytes.length; i++) {
             bytes memory b = battleInfoBytes[i];
             result = _mergeBytes(result, b);
         }
 
-        // bytes32 hash=keccak256(abi.encodePacked(result));
-        // result=abi.encodePacked(hash);
-
         return result;
     }
 
     function _singleRound(uint8 battleType, Fleet memory attacker, Fleet memory defender) private view returns (bytes memory){
-        //ships
+
+        //ship array
         uint256[] memory attackerShips = attacker.shipIdArray;
         uint256[] memory defenderShips = defender.shipIdArray;
 
+        //from index and to index
         uint8 fromIndex = uint8(_random(attackerShips.length));
         uint8 toIndex = uint8(_random(defenderShips.length));
+
+        //attribute index
         uint8 attributeIndex = 6;
 
+        //attacker ship and defender ship
         Ship memory attackerShip = _tokenIdShipMap[attackerShips[fromIndex]];
         Ship memory defenderShip = _tokenIdShipMap[defenderShips[toIndex]];
 
+        //cause damage
         uint16 delta = _causeDamage(attackerShip, defenderShip);
         defenderShip.health -= delta;
 
+        //create battle info
         BattleInfo memory info = BattleInfo(0x00, battleType, fromIndex, toIndex, attributeIndex, defenderShip.health);
+
+        //battle info to bytes
         return _battleInfoToBytes(info);
     }
 
@@ -262,16 +282,21 @@ contract TestLightYear is ERC721 {
      * 
      */
     function lightYear_mintShip() public {
+
+        //mint nft
         uint256 _tokenId = _mint();
 
+        //create ship
         Ship memory ship = _createShip();
         _tokenIdShipMap[_tokenId] = ship;
 
+        //get user
         UserInfo storage user = _userInfoMap[msg.sender];
         if (user.fleets.length == 0) {
             _createUser();
         }
 
+        //add ship to fleet
         Fleet storage lastFleet = user.fleets[user.fleets.length - 1];
         if (lastFleet.shipIdArray.length < FLEET_SHIP_LIMIT) {
             lastFleet.shipIdArray.push(_tokenId);
@@ -286,16 +311,21 @@ contract TestLightYear is ERC721 {
      * 
      */
     function lightYear_mintHero() public {
+
+        //mint nft
         uint256 _tokenId = _mint();
 
+        //create hero
         Hero memory hero = _createHero();
         _tokenIdHeroMap[_tokenId] = hero;
 
+        //get user
         UserInfo storage user = _userInfoMap[msg.sender];
         if (user.fleets.length == 0) {
             _createUser();
         }
 
+        //add hero to fleet
         Fleet storage lastFleet = user.fleets[user.fleets.length - 1];
         if (lastFleet.heroIdArray.length < FLEET_HERO_LIMIT) {
             lastFleet.heroIdArray.push(_tokenId);
