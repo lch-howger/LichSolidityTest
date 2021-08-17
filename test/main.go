@@ -38,13 +38,25 @@ func test04(rawHex string) {
 	rawHex = noPrefix(rawHex)
 	attackerHealth := rawHex[0:20]
 	defenderHealth := rawHex[20:40]
-	fmt.Printf("攻击者初始血量为:%v \n", attackerHealth)
-	fmt.Printf("防御者初始血量为:%v \n", defenderHealth)
+	printHealth(attackerHealth)
+	printHealth(defenderHealth)
+	//fmt.Printf("攻击者初始血量为:%v \n", attackerHealth)
+	//fmt.Printf("防御者初始血量为:%v \n", defenderHealth)
+	//
+	//arr := splitString(rawHex[40:], 12)
+	//for k, v := range arr {
+	//	fmt.Printf("第%v回合, 数据为: %v \n", k+1, v)
+	//}
+}
 
-	arr := splitString(rawHex[40:], 12)
-	for k, v := range arr {
-		fmt.Printf("第%v回合, 数据为: %v \n", k+1, v)
+func printHealth(health string)  {
+	if len(health)==20 {
+		for i := 0; i < 5; i++ {
+			str:=health[i*4:(i+1)*4]
+			fmt.Println(str)
+		}
 	}
+
 }
 
 func splitString(str string, length int) []string {
