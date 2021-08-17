@@ -56,6 +56,9 @@ contract TestLightYear is ERC721 {
 
     //address to user info
     mapping(address => UserInfo) private _userInfoMap;
+    
+    //user list
+    address[] private userList;
 
     struct UserInfo {
         string nickname;
@@ -347,6 +350,13 @@ contract TestLightYear is ERC721 {
     /**
      * 
      */
+    function lightYear_userList() public view returns (address[] memory){
+        return userList;
+    }
+
+    /**
+     * 
+     */
     function lightYear_ownerTokenList() public view returns (uint256[] memory){
         return _ownerTokenListMap[msg.sender];
     }
@@ -404,6 +414,9 @@ contract TestLightYear is ERC721 {
         UserInfo storage user = _userInfoMap[msg.sender];
         user.nickname = "";
         _createFleet();
+        
+        //add to user list
+        userList.push(msg.sender);
     }
 
     /**
